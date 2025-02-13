@@ -11,6 +11,12 @@ year Year
 2022
 /
 
+authors
+/
+Klein
+Siopa
+/
+
 flow Trade flow
 /
 Import
@@ -24,7 +30,39 @@ Min
 Max
 /
 
-FAOsubreg FAO sub-regions
+FAOsubreg_ext
+/
+NorthernAfrica                  
+WesternAfrica      
+EasternAfrica      
+MiddleAfrica       
+SouthernAfrica
+
+NorthernAmerica
+CentralAmerica
+Caribbean  
+SouthAmerica
+       
+EasternAsia        
+SouthernAsia       
+SouthEasternAsia
+CentralAsia        
+WesternAsia  
+    
+EasternEurope      
+NorthernEurope     
+WesternEurope
+SouthernEurope
+
+AustraliaNewZealand
+Melanesia          
+Micronesia         
+Polynesia               
+
+World
+/
+
+FAOsubreg(FAOsubreg_ext) FAO sub-regions
 /
 NorthernAfrica                  
 WesternAfrica      
@@ -54,6 +92,8 @@ Micronesia
 Polynesia               
 
 /
+
+
 
 
 i Sub-Regions /
@@ -114,13 +154,18 @@ reg Macro regions (continents)
 
 /
 Africa
-America
-Asia
+*America
+CentralSouthAmerica
+NorthAmerica
+*SoutheastAsia
+*Asia
+AsiaOceania
 Europe
-Oceania
+*Oceania
+World
 /
 
-map_reg_FAOsubreg(reg,FAOsubreg) Mapping between Continents and FAO subregions
+map_reg_FAOsubreg(reg,FAOsubreg_ext) Mapping between Continents and FAO subregions
 /
 Africa.NorthernAfrica 
 Africa.WesternAfrica      
@@ -128,29 +173,44 @@ Africa.EasternAfrica
 Africa.MiddleAfrica       
 Africa.SouthernAfrica
 
-America.NorthernAmerica
-America.CentralAmerica
-America.Caribbean  
-America.SouthAmerica
+*America.NorthernAmerica
+*America.CentralAmerica
+*America.Caribbean  
+*America.SouthAmerica
+
+NorthAmerica.NorthernAmerica
+CentralSouthAmerica.CentralAmerica
+CentralSouthAmerica.Caribbean  
+CentralSouthAmerica.SouthAmerica
        
-Asia.EasternAsia        
-Asia.SouthernAsia       
-Asia.SouthEasternAsia
-Asia.CentralAsia        
-Asia.WesternAsia
+*Asia.EasternAsia        
+*Asia.SouthernAsia       
+*Asia.SouthEasternAsia
+*Asia.CentralAsia        
+*Asia.WesternAsia
+*
+AsiaOceania.AustraliaNewZealand
+AsiaOceania.Melanesia          
+AsiaOceania.Micronesia         
+AsiaOceania.Polynesia 
+AsiaOceania.EasternAsia        
+AsiaOceania.SouthernAsia       
+AsiaOceania.SouthEasternAsia
+AsiaOceania.CentralAsia        
+AsiaOceania.WesternAsia
 
 Europe.EasternEurope      
 Europe.NorthernEurope     
 Europe.WesternEurope
 Europe.SouthernEurope 
     
-Oceania.AustraliaNewZealand
-Oceania.Melanesia          
-Oceania.Micronesia         
-Oceania.Polynesia          
+*Oceania.AustraliaNewZealand
+*Oceania.Melanesia          
+*Oceania.Micronesia         
+*Oceania.Polynesia          
 /
 
-table4 items from table 4 from the Uwingabire and Gallai study
+table4_UnG Items from table 4 from the Uwingabire and Gallai study
 /
 budget      Food and beverage budget
 CSchg       Consumer surplus change
@@ -172,13 +232,18 @@ pollcropprice_wgt       Poll crop price change - weighted average
 
 *Production and Demand is the same at the global level
 FoodProduction
+FoodDemand
 CropProduction
 PollCropProduction
+
+* weighted measures
+FoodProduction_wgt
+FoodDemand_wgt
 
 *add demand change in crop types
 /
 
-n(table4)   Nutrients
+n(table4_UnG)   Nutrients
 /
 VitA    Vitamin A
 VitC    Vitamin C
@@ -193,14 +258,33 @@ modeltype
 BaseDataBC  Base Data before Cleaning
 BaseDataAC  Base Data after Cleaning
 
-UnG     Uwingabire and Gallai results
-ModelA    Replication model 1 like in UG
-ModelB_2010_scaled    Replication model 2 based on food budget prices but with heterogenous preferences
-ModelB_2010    Replication model 3 based on producer prices with heterogenous preferences
-ModelB_2020    Replication model 4 - like model 3 yet for 2020
+UnG                 Uwingabire and Gallai results
+ModelA              Replication model A like in UG based on 2020
+ModelB_scaled       Extended model B with heterogenous preferences - but with scaled prices to match food budget from model A
+ModelB              Extended model B with heterogenous preferences
+ModelC              Extended model C - like model B yet calibrated on FAOSTAT data 2020
+ModelD              Extended model D - like model C yet basde on Sapoia et al. 2024 dependence ratios
 /
 
+mainmodels(modeltype)
+/
+UnG                 Uwingabire and Gallai results
+ModelA              Replication model A like in UG based on 2020
+ModelB              Extended model B with heterogenous preferences
+ModelC              Extended model C - like model B yet calibrated on FAOSTAT data 2020
+ModelD              Extended model D - like model C yet basde on Sapoia et al. 2024 dependence ratios
+/
+
+modelA_D(modeltype)
+/
+ModelA              Replication model A like in UG based on 2020
+*ModelB_scaled       Extended model B with heterogenous preferences - but with scaled prices to match food budget from model A
+ModelB              Extended model B with heterogenous preferences
+ModelC              Extended model C - like model B yet calibrated on FAOSTAT data 2020
+ModelD              Extended model D - like model C yet basde on Sapoia et al. 2024 dependence ratios
+/
 ;
+
 
 Set
 map_reg_i(reg,i);

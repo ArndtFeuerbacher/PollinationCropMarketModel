@@ -1,4 +1,4 @@
-*** This model variant aims to reconstruct the model approach in Uwangabire and Gallai (2024)
+*** This model variant aims to reconstruct the model approach in Uwangabire and Gallai (2023)
 
 *** Based on 2010
 *** The food budget is based on the UG data
@@ -69,6 +69,14 @@ X0(i,k)$(k1(k) and P.L(i,k)) = X.L(i,k);
 
 Q0(i,k)$k1(k) = FAOprod(i,k,year);
 
+* Calculate production value shares for k1 in the base
+prodvalue_shr_base0(k)$k1(k) = SUM(i, Q0(i,k) * PW0(k)) / SUM((i,kp)$k1(k),Q0(i,kp) * PW0(kp));
+
+prodvalue_shr_base0CHK= SUM(k,prodvalue_shr_base0(k));
+
+ABORT $(abs(prodvalue_shr_base0CHK - 1) GT 0.000005) "Production base value shares do not equal 1" ;
+
+
 Q.L(i,k)$(k1(k) and Q0(i,k)) = Q0(i,k);
 
 NX.L(i,k)$k1(k) = Q.L(i,k) - X.L(i,k);
@@ -97,7 +105,7 @@ value_shr_crops_base(k)$kcrop(k) = SUM(i, Q0(i,k) * PW0(k)) / SUM((i,kp)$kcrop(k
 value_shr_pollcrops_base(k)$kpollcrop(k) = SUM(i, Q0(i,k) * PW0(k)) / SUM((i,kp)$kpollcrop(kp) ,Q0(i,kp) * PW0(kp));
 
 ** set shock files
-D(k) = depratios(k,"Mean");
+D(k) = depratios(k,"Klein","Mean");
 alpha(i,k) = 0;
 
 ** calculate base food and nutrient intake
@@ -190,10 +198,13 @@ resNX(i,k,sim)$sim1r(sim)       = NX.L(i,k);
 ** Trade Balance
 resTradeBal(i,k,sim)            =  TB.L(i,k);
 
-resGlobal("World_Market_Price",k,sim)$sim1r(sim) = PW.L(k); 
-resGlobal("Global_Production",k,sim)$sim1r(sim) = SUM(i, Q.L(i,k)); 
+resGlobal("World_Market_Price",k,sim)$sim1r(sim) = PW.L(k);
+
+resGlobal("Global_Production",k,sim)$sim1r(sim) = SUM(i, Q.L(i,k) ); 
 resGlobal("GLobal_Demand",k,sim)$sim1r(sim)  = SUM(i, X.L(i,k)); 
-resGlobal("GLobal_NetExports",k,sim)$sim1r(sim) = SUM(i, NX.L(i,k)); 
+** Here global production, demand and trade are aggregated using base world market prices as weights
+resGlobal("Global_Production_wgt",k,sim)$sim1r(sim) = SUM(i, Q.L(i,k) * PW0(k)); 
+resGlobal("GLobal_Demand_wgt",k,sim)$sim1r(sim)  = SUM(i, X.L(i,k)* PW0(k)); 
 
 resPWperc(k,sim)$(sim1r(sim) and resPW(k,"Basemod1") )          = PW.L(k) / resPW(k,"Basemod1")-1;
 resQperc(i,k,sim)$(sim1r(sim) and resQ(i,k,"Basemod1") )       = Q.L(i,k) / resQ(i,k,"Basemod1")-1;
@@ -203,28 +214,28 @@ resTradeBalperc(i,k,sim)$(sim1r(sim) and resTradeBal(i,k,"Basemod1"))        = T
 
 resNXabs(i,k,sim)$(sim1r(sim))    = NX.L(i,k) - resNX(i,k,"Basemod1");
 
+** Calculate global results - careful when aggregating - see weighted measures
 resGlobalperc_food("World_Market_Price",k,sim)$(sim1r(sim) and resPW(k,"Basemod1") )  = PW.L(k) / resPW(k,"Basemod1")-1;
 resGlobalperc_food("Global_Production",k,sim)$(sim1r(sim) and resGlobal("Global_Production",k,"Basemod1") )  = resGlobal("Global_Production",k,sim)/ resGlobal("Global_Production",k,"Basemod1")-1;
 resGlobalperc_food("Global_Demand",k,sim)$(sim1r(sim) and resGlobal("Global_Demand",k,"Basemod1"))   = resGlobal("Global_Demand",k,sim) / resGlobal("Global_Demand",k,"Basemod1")-1;
-resGlobalperc_food("Global_NetExports",k,sim)$(sim1r(sim) and resGlobal("Global_NetExports",k,"Basemod1") )  = resGlobal("Global_NetExports",k,sim) / resGlobal("Global_NetExports",k,"Basemod1")-1;
 
 *resGlobalperc_foodtot("World_Market_Price",sim)$(sim1r(sim) and SUM(k, value_shr_base(k)*resPW(k,"Basemod1")))  = SUM(k, PW.L(k) *value_shr_base(k)) / SUM(k, value_shr_base(k)*resPW(k,"Basemod1"))-1;
 resGlobalperc_foodtot("World_Market_Price",sim)$(sim1r(sim))  = SUM(k, resPWperc(k,sim) *value_shr_base(k)) ;
 resGlobalperc_foodtot("Global_Production",sim)$(sim1r(sim) and SUM(k, resGlobal("Global_Production",k,"Basemod1")))  = SUM(k,resGlobal("Global_Production",k,sim))/SUM(k, resGlobal("Global_Production",k,"Basemod1"))-1;
 resGlobalperc_foodtot("Global_Demand",sim)$(sim1r(sim) and SUM(k, resGlobal("Global_Demand",k,"Basemod1")))   = SUM(k, resGlobal("Global_Demand",k,sim)) / SUM(k, resGlobal("GLobal_Demand",k,"Basemod1"))-1;
-resGlobalperc_foodtot("Global_NetExports",sim)$(sim1r(sim) and SUM(k, resGlobal("Global_NetExports",k,"Basemod1")))  = SUM(k,resGlobal("Global_NetExports",k,sim)) / SUM(k, resGlobal("GLobal_NetExports",k,"Basemod1"))-1;
+** also include weighted measures
+resGlobalperc_foodtot("Global_Production_wgt",sim)$(sim1r(sim) and SUM(k, resGlobal("Global_Production_wgt",k,"Basemod1")))  = SUM(k,resGlobal("Global_Production_wgt",k,sim))/SUM(k, resGlobal("Global_Production_wgt",k,"Basemod1"))-1;
+resGlobalperc_foodtot("Global_Demand_wgt",sim)$(sim1r(sim) and SUM(k, resGlobal("Global_Demand_wgt",k,"Basemod1")))   = SUM(k, resGlobal("Global_Demand_wgt",k,sim)) / SUM(k, resGlobal("GLobal_Demand_wgt",k,"Basemod1"))-1;
 
 *resGlobalperc_croptot("World_Market_Price",sim)$(sim1r(sim) and SUM(k$kcrop(k), value_shr_base(k)*resPW(k,"Basemod1")))  = SUM(k$kcrop(k), PW.L(k) *value_shr_base(k)) / SUM(k$kcrop(k), value_shr_base(k)*resPW(k,"Basemod1"))-1;
 resGlobalperc_croptot("World_Market_Price",sim)$(sim1r(sim))  = SUM(k$kcrop(k), resPWperc(k,sim) *value_shr_crops_base(k)) ;
 resGlobalperc_croptot("Global_Production",sim)$(sim1r(sim) and SUM(k$kcrop(k), resGlobal("Global_Production",k,"Basemod1")))  = SUM(k$kcrop(k),resGlobal("Global_Production",k,sim))/SUM(k$kcrop(k), resGlobal("Global_Production",k,"Basemod1"))-1;
 resGlobalperc_croptot("Global_Demand",sim)$(sim1r(sim) and SUM(k$kcrop(k), resGlobal("Global_Demand",k,"Basemod1")))   = SUM(k$kcrop(k), resGlobal("Global_Demand",k,sim)) / SUM(k$kcrop(k), resGlobal("Global_Demand",k,"Basemod1"))-1;
-resGlobalperc_croptot("Global_NetExports",sim)$(sim1r(sim) and SUM(k$kcrop(k), resGlobal("Global_NetExports",k,"Basemod1")))  = SUM(k$kcrop(k),resGlobal("Global_NetExports",k,sim)) / SUM(k$kcrop(k), resGlobal("Global_NetExports",k,"Basemod1"))-1;
 
 *resGlobalperc_pollcroptot("World_Market_Price",sim)$(sim1r(sim) and SUM(k$kpollcrop(k), value_shr_base(k)*resPW(k,"Basemod1")))  = SUM(k$kpollcrop(k), PW.L(k) *value_shr_base(k)) / SUM(k$kpollcrop(k), value_shr_base(k)*resPW(k,"Basemod1"))-1;
 resGlobalperc_pollcroptot("World_Market_Price",sim)$(sim1r(sim))  = SUM(k$kpollcrop(k), resPWperc(k,sim) *value_shr_pollcrops_base(k)) ;
 resGlobalperc_pollcroptot("Global_Production",sim)$(sim1r(sim) and SUM(k$kpollcrop(k), resGlobal("Global_Production",k,"Basemod1")))  = SUM(k$kpollcrop(k),resGlobal("Global_Production",k,sim))/SUM(k$kpollcrop(k), resGlobal("Global_Production",k,"Basemod1"))-1;
 resGlobalperc_pollcroptot("Global_Demand",sim)$(sim1r(sim) and SUM(k$kpollcrop(k), resGlobal("Global_Demand",k,"Basemod1")))   = SUM(k$kpollcrop(k), resGlobal("Global_Demand",k,sim)) / SUM(k$kpollcrop(k), resGlobal("Global_Demand",k,"Basemod1"))-1;
-resGlobalperc_pollcroptot("Global_NetExports",sim)$(sim1r(sim) and SUM(k$kpollcrop(k), resGlobal("Global_NetExports",k,"Basemod1")))  = SUM(k$kpollcrop(k),resGlobal("Global_NetExports",k,sim)) / SUM(k$kpollcrop(k), resGlobal("Global_NetExports",k,"Basemod1"))-1;
 
 value_shr_crops_base(k)$kcrop(k) = SUM(i, Q0(i,k) * PW0(k)) / SUM((i,kp)$kcrop(kp),Q0(i,kp) * PW0(kp));
 value_shr_pollcrops_base(k)$kpollcrop(k) = SUM(i, Q0(i,k) * PW0(k)) / SUM((i,kp)$kpollcrop(kp) ,Q0(i,kp) * PW0(kp));
@@ -255,13 +266,24 @@ resGlobalCropGroupPrice_wgt(cropgroup,sim)$sim1r(sim)  = SUM(k$mapping_k_cropgro
 ** Change in Trade Balances in billion USD 
 resTradeBalance(FAOsubreg,cropgroup,sim)$sim1r(sim) = SUM((k, i)$ ( mapping_k_cropgroup(k,cropgroup) and map_i_FAOsubreg(i,FAOsubreg)), resNX(i,k,sim) * resPW(k,sim)) / 10**9;           
 resTradeBalance_regional(reg,cropgroup,sim)$sim1r(sim)  = SUM((i,k)$(mapping_k_cropgroup(k,cropgroup) and map_reg_i(reg,i)), resNX(i,k,sim)*resPW(k,sim))  / 10**9;  
-            
+ 
+** Change in Food Demand and Production        
+resFoodDemand_reg(FAOsubreg,k,sim)$sim1r(sim)  = SUM(i$map_i_FAOsubreg(i,FAOsubreg), resX(i,k,sim));  
+resFoodDemand_reg_perc(FAOsubreg,k,sim)$(sim1r(sim) and resFoodDemand_reg(FAOsubreg,k,"Basemod1"))  = SUM(i$map_i_FAOsubreg(i,FAOsubreg), resX(i,k,sim)) / resFoodDemand_reg(FAOsubreg,k,"Basemod1") -1;  
 
-resFoodDemand_reg(FAOsubreg,sim)$sim1r(sim)  = SUM(i$map_i_FAOsubreg(i,FAOsubreg),SUM(k, resX(i,k,sim))); 
-resFoodDemand_reg_perc(FAOsubreg,sim)$(sim1r(sim) and resFoodDemand_reg(FAOsubreg,"Basemod1")) = resFoodDemand_reg(FAOsubreg,sim)/resFoodDemand_reg(FAOsubreg,"Basemod1") - 1;
+resFoodDemand_macroreg_cropgroup(reg,cropgroup,sim)$sim1r(sim)  = SUM(FAOsubreg, map_reg_FAOsubreg(reg,FAOsubreg) * SUM(k, mapping_k_cropgroup(k,cropgroup) * resFoodDemand_reg(FAOsubreg,k,sim)) ); 
+*Calculate global changes
+resFoodDemand_macroreg_cropgroup("World",cropgroup,sim)$sim1r(sim)  = SUM(reg,resFoodDemand_macroreg_cropgroup(reg,cropgroup,sim));
+** calculate percentage changes
+resFoodDemand_macroreg_cropgroup_perc(reg,cropgroup,sim)$(sim1r(sim) and resFoodDemand_macroreg_cropgroup(reg,cropgroup,"Basemod1")) =   resFoodDemand_macroreg_cropgroup(reg,cropgroup,sim)/resFoodDemand_macroreg_cropgroup(reg,cropgroup,"Basemod1") -1 ;
+
+
+
+resTotalFoodDemand_reg(FAOsubreg,sim)$sim1r(sim)  = SUM(i$map_i_FAOsubreg(i,FAOsubreg),SUM(k, resX(i,k,sim))); 
+resTotalFoodDemand_reg_perc(FAOsubreg,sim)$(sim1r(sim) and resTotalFoodDemand_reg(FAOsubreg,"Basemod1")) = resTotalFoodDemand_reg(FAOsubreg,sim)/resTotalFoodDemand_reg(FAOsubreg,"Basemod1") - 1;
   
-resFoodDemandValue_reg(FAOsubreg,sim)$sim1r(sim)  = SUM(i$map_i_FAOsubreg(i,FAOsubreg),SUM(k, resX(i,k,sim)*resPW(k,sim))); 
-resFoodDemandValue_reg_perc(FAOsubreg,sim)$(sim1r(sim) and resFoodDemandValue_reg(FAOsubreg,"Basemod1")) = resFoodDemandValue_reg(FAOsubreg,sim)/resFoodDemandValue_reg(FAOsubreg,"Basemod1") - 1;
+resTotalFoodDemandValue_reg(FAOsubreg,sim)$sim1r(sim)  = SUM(i$map_i_FAOsubreg(i,FAOsubreg),SUM(k, resX(i,k,sim)*resPW(k,sim))); 
+resTotalFoodDemandValue_reg_perc(FAOsubreg,sim)$(sim1r(sim) and resTotalFoodDemandValue_reg(FAOsubreg,"Basemod1")) = resTotalFoodDemandValue_reg(FAOsubreg,sim)/resTotalFoodDemandValue_reg(FAOsubreg,"Basemod1") - 1;
                      
                    
 resFoodProd_reg(FAOsubreg,sim)$sim1r(sim)  = SUM(i$map_i_FAOsubreg(i,FAOsubreg),SUM(k, resQ(i,k,sim))); 

@@ -1,7 +1,12 @@
+** Model Code underlyign the results of Feuerbacher (2025) - Pollinator Declines, International Trade and Global Food Security: Reassessing the Global Economic and Nutritional Impacts
+** Version: February, 2025 - Mansuscript accepted with minor revisions by Ecological Economics
+
+
 *** This code replicates the study of Uwingabire and Gallai, 2024 in Ecological Economics ***
 
 *** Code developed by Arndt Feuerbacher, University of Hohenheim, Research Group Ecological-Economic Policy Modelling ***
 
+** Note: FinalOutputs.gms reports 
 *** Define sets (indices) used in the later model
 
 ** Load model sets
@@ -18,11 +23,13 @@ FAOsubregpop(FAOsubreg,i, year)                     Population of FAO subregions
 
 SubRegPop(i)                                        Populations in sub-regions in year1 (set above)
 
-depratios(k,intens)                                 Dependence ratios for FAO food items according to Klein et al (2007)
-** Conversion matrix was derived from selective studies and consulting chatGPT
+depratios(k,authors,intens)                  Dependence ratios for FAO food items according to Klein et al (2007) and Siopa et al. (2024)
+
+** Conversion matrix is based on FAO, nd. Technical Conversion Factors for Agricultural Commodities. Rome, Italy. https://www.fao.org/fileadmin/templates/ess/documents/methodology/tcf.pdf
 conversionmatrix(k,j)                               Conversion matrix to convert food items j to raw equivalents in food items k
 
-nutritionmatrix(k,n)                                Nutrition content of edible crops based on Chaplin-Kramer et al 2014 - per 100g
+** Nutrition matrix is based on Chaplin-Kramer et al. 2014 -  per 100g or international unit (for Vitamin A)
+nutritionmatrix(k,n)                                Nutrition content of edible crops 
 
 * Base Food and Nutrient Intake for Model Year 2010
 
@@ -32,11 +39,11 @@ BaseNutrientIntake_pc(FAOsubreg,modeltype, n)       Base Nutrient Intake (in 100
 
 ** Data from the UG study
 
-Uwingabire_study(i,table4)                          Data extracted from Uwingabire and Gallai (UG) study - per region i
-Uwingabire_study2(FAOsubreg,i,table4)               Data extracted from Uwingabire and Gallai (UG) study - per region i
+Uwingabire_study(i,table4_UnG)                          Data extracted from Uwingabire and Gallai (UG) study - per region i
+Uwingabire_study2(FAOsubreg,i,table4_UnG)               Data extracted from Uwingabire and Gallai (UG) study - per region i
 
-WelfareUnG_subreg(i,table4)                         Welfare changes in billion USD as reported by UG    
-WelfareUnG_global(table4)                           Global welfare changes in billion USD as reported by UG
+WelfareUnG_subreg(i,table4_UnG)                         Welfare changes in billion USD as reported by UG    
+WelfareUnG_global(table4_UnG)                           Global welfare changes in billion USD as reported by UG
 
 
 count_prices(c,k,year)                              Parameter that counts the number of price records per country and year 
@@ -81,6 +88,7 @@ TotalIteration                                      Count total iterations
 
 ** Activate the "connect code" below if the code is run for the first time
 
+
 $ontext
 $onEmbeddedCode Connect:
 - ExcelReader:
@@ -91,7 +99,7 @@ $onEmbeddedCode Connect:
         rowDimension: 1
         columnDimension: 1
       - name: nutritionmatrix
-        range: NC!A4
+        range: NutrientContent!A4
         rowDimension: 1
         columnDimension: 1
       - name: FAOprices
@@ -110,10 +118,10 @@ $onEmbeddedCode Connect:
         range: FAOimport!A1
         rowDimension: 3
         columnDimension: 0
-      - name: DepRatios
-        range: DepRatios!B4
+      - name: depratios
+        range: DepRatios!C3
         rowDimension: 1
-        columnDimension: 1
+        columnDimension: 2      
       - name: FAOpop
         range: FAOpop!B1
         rowDimension: 2
@@ -121,29 +129,29 @@ $onEmbeddedCode Connect:
       - name: Uwingabire_study
         range: Uwingabire_study!B1
         rowDimension: 1
-        columnDimension: 1
+        columnDimension: 1      
 - GAMSWriter:
-    writeAll: True
     domainCheckType: checked
 $offEmbeddedCode
 
-** to accelerate the run time - the parameters loaded from xlsx are stored as gdx files that can be loaded more quickly
+
+
 $gdxOut replication_data.gdx
-$unload ConversionMatrix FAOprices FAOprod FAOexport_allitems FAOimport_allitems DepRatios nutritionmatrix FAOpop Uwingabire_study
+$unload ConversionMatrix FAOprices FAOprod FAOexport_allitems FAOimport_allitems nutritionmatrix FAOpop Uwingabire_study depratios
 $gdxOut
 
-** Important: if connect code above is run, do stop here - then comment out the connect above and re-run the whole file without the stop command
-*$stop
+** Important: if connect code above is run, do stop here - then comment out the connect above (deactivate $ontext and $offtext) and re-run the whole file without the stop command and the GAMS connect code above (re-activate the $ontext)
+$stop
 $offtext
-
-** These two lines load the data from the gdx file if before the connect code is run.
+** to accelerate the run time - the parameters loaded from xlsx are stored as gdx files that can be loaded more quickly.
+** The gdx file is provided with the supplementary data, but if the excel file is updated then the above Connect code - if commented out - needs to be again included.
 $gdxIn replication_data.gdx
-$loadDC ConversionMatrix FAOprices FAOprod FAOexport_allitems FAOimport_allitems DepRatios nutritionmatrix FAOpop Uwingabire_study
+$loadDC ConversionMatrix FAOprices FAOprod FAOexport_allitems FAOimport_allitems DepRatios nutritionmatrix FAOpop Uwingabire_study 
 
 
 FAOsubregpop(FAOsubreg,i, year)  = map_i_FAOsubreg(i,FAOsubreg) * FAOpop(i,year);
 
-Uwingabire_study2(FAOsubreg,i,table4) = Uwingabire_study(i,table4) * map_i_FAOsubreg(i,FAOsubreg);
+Uwingabire_study2(FAOsubreg,i,table4_UnG) = Uwingabire_study(i,table4_UnG) * map_i_FAOsubreg(i,FAOsubreg);
 
 Uwingabire_study2(FAOsubreg,i,"NWFchg") = Uwingabire_study2(FAOsubreg,i,"CSchg")  + Uwingabire_study2(FAOsubreg,i,"PSchg") ;
 
@@ -216,7 +224,7 @@ global_imports_beforescaling(k,year)  = SUM(i,FAOimport(i,k,year));
 net_trade_beforescaling(k,year)       = global_exports_beforescaling(k,year) - global_imports_beforescaling(k,year);
 
 shr_trade_difference(k,year)$net_trade_beforescaling(k,year) = abs(net_trade_beforescaling(k,year)  / ((global_exports_beforescaling(k,year)  + global_imports_beforescaling(k,year))/2));
-shr_trade_difference_withdep(k,year)$(depratios(k,"mean")) = shr_trade_difference(k,year);
+shr_trade_difference_withdep(k,year)$(depratios(k,"Klein","mean")) = shr_trade_difference(k,year);
   
 ** separate scaling factors to scale exports and imports equal to the average of global total imports/exports
    
@@ -292,20 +300,29 @@ AbbortIfDemandBelowZero
 ;
 
 FAOdemand_belowzero(i,k,year)$(FAOdemand(i,k,year) LT 0) = FAOdemand(i,k,year);
-FAOdemand_belowzero_depratiolt0(i,k,year)$(depratios(k,"mean")) = FAOdemand_belowzero(i,k,year);
+FAOdemand_belowzero_depratiolt0(i,k,year)$(depratios(k,"Klein","mean")) = FAOdemand_belowzero(i,k,year);
 
 AbbortIfDemandBelowZero = abs(SUM((i,k,year),FAOdemand_belowzero(i,k,year) ));
 
 ABORT $(AbbortIfDemandBelowZero GT 0.000005) "Some item demands are below zero" ;
 
 
+** Only include below to replicate appendix E (to calculate the share of pollination dependent crops in total crop production value, export and import value)
+$INCLUDE PollinationDepGlobalShareCalc.gms
+
 $INCLUDE ModelComponents.gms
 $INCLUDE Model A
 *$stop
-$INCLUDE Model B_2010_scaled.gms
-$INCLUDE Model B_2010.gms
-$INCLUDE Model B_2020.gms
+** Model B scaled is the model that uses heterogenous preferences and FAO trade data, but which is scaled to the UG budget data as in model A
+$INCLUDE Model B_scaled.gms
+$INCLUDE Model B.gms
+$INCLUDE Model C.gms
+$INCLUDE Model D.gms
 *$stop
+
+
+
+******* RESULT ANALYSIS *******
 
 resGlobalPriceTotalObs(modeltype) = SUM(k, resGlobalPriceObs(k,modeltype));
 
@@ -325,25 +342,32 @@ ModelComparison("ModelA","PSchg") = resPSchg_global("simmod1_a100") / 10**3  ;
 ModelComparison("ModelA","NWFchg") = ModelComparison("ModelA","CSchg") +
                                             ModelComparison("ModelA","PSchg");
                                             
-ModelComparison("ModelB_2010_scaled","Budget") =  SUM(i, Budget(i,"ModelB_2010_scaled")) / 10**9 ;
-ModelComparison("ModelB_2010_scaled","CSchg") = resCSchg_global("simmod2_a100") / 10**3  ;
-ModelComparison("ModelB_2010_scaled","PSchg") = resPSchg_global("simmod2_a100") / 10**3 ;
-ModelComparison("ModelB_2010_scaled","NWFchg") = ModelComparison("ModelB_2010_scaled","CSchg") +
-                                            ModelComparison("ModelB_2010_scaled","PSchg");                                          
+ModelComparison("ModelB_scaled","Budget") =  SUM(i, Budget(i,"ModelB_scaled")) / 10**9 ;
+ModelComparison("ModelB_scaled","CSchg") = resCSchg_global("simmod2_a100") / 10**3  ;
+ModelComparison("ModelB_scaled","PSchg") = resPSchg_global("simmod2_a100") / 10**3 ;
+ModelComparison("ModelB_scaled","NWFchg") = ModelComparison("ModelB_scaled","CSchg") +
+                                            ModelComparison("ModelB_scaled","PSchg");                                          
 
-ModelComparison("ModelB_2010","Budget") = SUM(i, Budget(i,"ModelB_2010")) / 10**9 ;
-ModelComparison("ModelB_2010","CSchg") = resCSchg_global("simmod3_a100") / 10**3  ;
-ModelComparison("ModelB_2010","PSchg") = resPSchg_global("simmod3_a100") / 10**3 ;
-ModelComparison("ModelB_2010","NWFchg") = ModelComparison("ModelB_2010","CSchg") +
-                                            ModelComparison("ModelB_2010","PSchg");
+ModelComparison("ModelB","Budget") = SUM(i, Budget(i,"ModelB")) / 10**9 ;
+ModelComparison("ModelB","CSchg") = resCSchg_global("simmod3_a100") / 10**3  ;
+ModelComparison("ModelB","PSchg") = resPSchg_global("simmod3_a100") / 10**3 ;
+ModelComparison("ModelB","NWFchg") = ModelComparison("ModelB","CSchg") +
+                                            ModelComparison("ModelB","PSchg");
                                             
-ModelComparison("ModelB_2020","Budget") = SUM(i, Budget(i,"ModelB_2020")) / 10**9 ;
-ModelComparison("ModelB_2020","CSchg") = resCSchg_global("simmod4_a100") / 10**3  ;
-ModelComparison("ModelB_2020","PSchg") = resPSchg_global("simmod4_a100") / 10**3 ;
-ModelComparison("ModelB_2020","NWFchg") = ModelComparison("ModelB_2020","CSchg") +
-                                            ModelComparison("ModelB_2020","PSchg");
+ModelComparison("ModelC","Budget") = SUM(i, Budget(i,"ModelC")) / 10**9 ;
+ModelComparison("ModelC","CSchg") = resCSchg_global("simmod4_a100") / 10**3  ;
+ModelComparison("ModelC","PSchg") = resPSchg_global("simmod4_a100") / 10**3 ;
+ModelComparison("ModelC","NWFchg") = ModelComparison("ModelC","CSchg") +
+                                            ModelComparison("ModelC","PSchg");
+                                            
+ModelComparison("ModelD","Budget") = SUM(i, Budget(i,"ModelD")) / 10**9 ;
+ModelComparison("ModelD","CSchg") = resCSchg_global("simmod5_a100") / 10**3  ;
+ModelComparison("ModelD","PSchg") = resPSchg_global("simmod5_a100") / 10**3 ;
+ModelComparison("ModelD","NWFchg") = ModelComparison("ModelD","CSchg") +
+                                            ModelComparison("ModelD","PSchg");
      
-*taken from Fig. 4 Uwingabire and Gallai                                       
+*taken from Fig. 4 Uwingabire, Z., Gallai, N., 2024. Impacts of degraded pollination ecosystem services on global food security and nutrition.
+* Ecological Economics 217, 108068. https://doi.org/10.1016/j.ecolecon.2023.108068"                                    
 ModelComparison("UnG","VitA")       = -0.067;
 ModelComparison("UnG","VitC")       = -0.052;
 ModelComparison("UnG","Iron")       = -0.034;
@@ -352,9 +376,10 @@ ModelComparison("UnG","Protein")    = -0.018;
 ModelComparison("UnG","VitB6")      = -0.0015;
 
 ModelComparison("ModelA",n) = resGlobalNutrients_perc(n,"simmod1_a100");
-ModelComparison("ModelB_2010_scaled",n) = resGlobalNutrients_perc(n,"simmod2_a100");
-ModelComparison("ModelB_2010",n) = resGlobalNutrients_perc(n,"simmod3_a100");
-ModelComparison("ModelB_2020",n) = resGlobalNutrients_perc(n,"simmod4_a100");
+ModelComparison("ModelB_scaled",n) = resGlobalNutrients_perc(n,"simmod2_a100");
+ModelComparison("ModelB",n) = resGlobalNutrients_perc(n,"simmod3_a100");
+ModelComparison("ModelC",n) = resGlobalNutrients_perc(n,"simmod4_a100");
+ModelComparison("ModelD",n) = resGlobalNutrients_perc(n,"simmod5_a100");
 
 ModelComparison("ModelA","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod1_a100");
 ModelComparison("ModelA","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod1_a100");
@@ -365,64 +390,115 @@ ModelComparison("ModelA","pollcropprice_avg")     = resGlobalPollPrice_avg("simm
 ModelComparison("ModelA","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod1_a100");
 ModelComparison("ModelA","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod1_a100");
 ModelComparison("ModelA","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod1_a100");
+*added 
+ModelComparison("ModelA","FoodDemand")            = resGlobalperc_foodtot("Global_Demand",         "simmod1_a100");
+ModelComparison("ModelA","FoodProduction_wgt")    = resGlobalperc_foodtot("Global_Production_wgt", "simmod1_a100");
+ModelComparison("ModelA","FoodDemand_wgt")        = resGlobalperc_foodtot("Global_Demand_wgt",     "simmod1_a100");
 
-ModelComparison("ModelB_2010_scaled","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod2_a100");
-ModelComparison("ModelB_2010_scaled","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod2_a100");
-ModelComparison("ModelB_2010_scaled","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod2_a100");
-ModelComparison("ModelB_2010_scaled","foodprice_avg")         = resGlobalFoodPrice_avg("simmod2_a100");
-ModelComparison("ModelB_2010_scaled","cropprice_avg")         = resGlobalCropPrice_avg("simmod2_a100");
-ModelComparison("ModelB_2010_scaled","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod2_a100");
-ModelComparison("ModelB_2010_scaled","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod2_a100");
-ModelComparison("ModelB_2010_scaled","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod2_a100");
-ModelComparison("ModelB_2010_scaled","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod2_a100");
+ModelComparison("ModelB_scaled","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod2_a100");
+ModelComparison("ModelB_scaled","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod2_a100");
+ModelComparison("ModelB_scaled","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod2_a100");
+ModelComparison("ModelB_scaled","foodprice_avg")         = resGlobalFoodPrice_avg("simmod2_a100");
+ModelComparison("ModelB_scaled","cropprice_avg")         = resGlobalCropPrice_avg("simmod2_a100");
+ModelComparison("ModelB_scaled","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod2_a100");
+ModelComparison("ModelB_scaled","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod2_a100");
+ModelComparison("ModelB_scaled","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod2_a100");
+ModelComparison("ModelB_scaled","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod2_a100");
+*added 
+ModelComparison("ModelB_scaled","FoodDemand")            = resGlobalperc_foodtot("Global_Demand",         "simmod2_a100");
+ModelComparison("ModelB_scaled","FoodProduction_wgt")    = resGlobalperc_foodtot("Global_Production_wgt", "simmod2_a100");
+ModelComparison("ModelB_scaled","FoodDemand_wgt")        = resGlobalperc_foodtot("Global_Demand_wgt",     "simmod2_a100");
 
-ModelComparison("ModelB_2010","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod3_a100");
-ModelComparison("ModelB_2010","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod3_a100");
-ModelComparison("ModelB_2010","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod3_a100");
-ModelComparison("ModelB_2010","foodprice_avg")         = resGlobalFoodPrice_avg("simmod3_a100");
-ModelComparison("ModelB_2010","cropprice_avg")         = resGlobalCropPrice_avg("simmod3_a100");
-ModelComparison("ModelB_2010","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod3_a100");
-ModelComparison("ModelB_2010","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod3_a100");
-ModelComparison("ModelB_2010","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod3_a100");
-ModelComparison("ModelB_2010","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod3_a100");
+ModelComparison("ModelB","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod3_a100");
+ModelComparison("ModelB","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod3_a100");
+ModelComparison("ModelB","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod3_a100");
+ModelComparison("ModelB","foodprice_avg")         = resGlobalFoodPrice_avg("simmod3_a100");
+ModelComparison("ModelB","cropprice_avg")         = resGlobalCropPrice_avg("simmod3_a100");
+ModelComparison("ModelB","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod3_a100");
+ModelComparison("ModelB","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod3_a100");
+ModelComparison("ModelB","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod3_a100");
+ModelComparison("ModelB","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod3_a100");
+*added 
+ModelComparison("ModelB","FoodDemand")            = resGlobalperc_foodtot("Global_Demand",         "simmod3_a100");
+ModelComparison("ModelB","FoodProduction_wgt")    = resGlobalperc_foodtot("Global_Production_wgt", "simmod3_a100");
+ModelComparison("ModelB","FoodDemand_wgt")        = resGlobalperc_foodtot("Global_Demand_wgt",     "simmod3_a100");
 
-ModelComparison("ModelB_2020","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod4_a100");
-ModelComparison("ModelB_2020","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod4_a100");
-ModelComparison("ModelB_2020","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod4_a100");
-ModelComparison("ModelB_2020","foodprice_avg")         = resGlobalFoodPrice_avg("simmod4_a100");
-ModelComparison("ModelB_2020","cropprice_avg")         = resGlobalCropPrice_avg("simmod4_a100");
-ModelComparison("ModelB_2020","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod4_a100");
-ModelComparison("ModelB_2020","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod4_a100");
-ModelComparison("ModelB_2020","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod4_a100");
-ModelComparison("ModelB_2020","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod4_a100");
+
+ModelComparison("ModelC","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod4_a100");
+ModelComparison("ModelC","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod4_a100");
+ModelComparison("ModelC","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod4_a100");
+ModelComparison("ModelC","foodprice_avg")         = resGlobalFoodPrice_avg("simmod4_a100");
+ModelComparison("ModelC","cropprice_avg")         = resGlobalCropPrice_avg("simmod4_a100");
+ModelComparison("ModelC","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod4_a100");
+ModelComparison("ModelC","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod4_a100");
+ModelComparison("ModelC","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod4_a100");
+ModelComparison("ModelC","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod4_a100");
+*added 
+ModelComparison("ModelC","FoodDemand")            = resGlobalperc_foodtot("Global_Demand",         "simmod4_a100");
+ModelComparison("ModelC","FoodProduction_wgt")    = resGlobalperc_foodtot("Global_Production_wgt", "simmod4_a100");
+ModelComparison("ModelC","FoodDemand_wgt")        = resGlobalperc_foodtot("Global_Demand_wgt",     "simmod4_a100");
+
+ModelComparison("ModelD","foodprice_wgt")         = resGlobalperc_foodtot("World_Market_Price","simmod5_a100");
+ModelComparison("ModelD","cropprice_wgt")         = resGlobalperc_croptot("World_Market_Price","simmod5_a100");
+ModelComparison("ModelD","pollcropprice_wgt")     = resGlobalperc_pollcroptot("World_Market_Price","simmod5_a100");
+ModelComparison("ModelD","foodprice_avg")         = resGlobalFoodPrice_avg("simmod5_a100");
+ModelComparison("ModelD","cropprice_avg")         = resGlobalCropPrice_avg("simmod5_a100");
+ModelComparison("ModelD","pollcropprice_avg")     = resGlobalPollPrice_avg("simmod5_a100");
+ModelComparison("ModelD","FoodProduction")        = resGlobalperc_foodtot("Global_Production","simmod5_a100");
+ModelComparison("ModelD","CropProduction")        = resGlobalperc_croptot("Global_Production","simmod5_a100");
+ModelComparison("ModelD","PollCropProduction")    = resGlobalperc_pollcroptot("Global_Production","simmod5_a100");
+*added 
+ModelComparison("ModelD","FoodDemand")            = resGlobalperc_foodtot("Global_Demand",         "simmod5_a100");
+ModelComparison("ModelD","FoodProduction_wgt")    = resGlobalperc_foodtot("Global_Production_wgt", "simmod5_a100");
+ModelComparison("ModelD","FoodDemand_wgt")        = resGlobalperc_foodtot("Global_Demand_wgt",     "simmod5_a100");
+
 
 *** Retrieve results for welfare changes 
 
-WelfareChangeRegion(FAOsubreg,Table4,"UnG") = SUM(i,Uwingabire_study(i,table4) * map_i_FAOsubreg(i,FAOsubreg));
+WelfareChangeRegion(FAOsubreg,table4_UnG,"UnG") = SUM(i,Uwingabire_study(i,table4_UnG) * map_i_FAOsubreg(i,FAOsubreg));
 
 WelfareChangeRegion(FAOsubreg,"CSchg","ModelA")  = SUM(i,resCSchg_subreg(i,"simmod1_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
 WelfareChangeRegion(FAOsubreg,"PSchg","ModelA")  = SUM(i,resPSchg_subreg(i,"simmod1_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
 WelfareChangeRegion(FAOsubreg,"NWFchg","ModelA") = SUM(i,resWFchg_subreg(i,"simmod1_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
                                                                                                                        
-WelfareChangeRegion(FAOsubreg,"CSchg","ModelB_2010")  = SUM(i,resCSchg_subreg(i,"simmod3_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
-WelfareChangeRegion(FAOsubreg,"PSchg","ModelB_2010")  = SUM(i,resPSchg_subreg(i,"simmod3_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
-WelfareChangeRegion(FAOsubreg,"NWFchg","ModelB_2010") = SUM(i,resWFchg_subreg(i,"simmod3_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"CSchg","ModelB")  = SUM(i,resCSchg_subreg(i,"simmod3_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"PSchg","ModelB")  = SUM(i,resPSchg_subreg(i,"simmod3_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"NWFchg","ModelB") = SUM(i,resWFchg_subreg(i,"simmod3_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
                                                                                                                        
-WelfareChangeRegion(FAOsubreg,"CSchg","ModelB_2020")  = SUM(i,resCSchg_subreg(i,"simmod4_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
-WelfareChangeRegion(FAOsubreg,"PSchg","ModelB_2020")  = SUM(i,resPSchg_subreg(i,"simmod4_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
-WelfareChangeRegion(FAOsubreg,"NWFchg","ModelB_2020") = SUM(i,resWFchg_subreg(i,"simmod4_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"CSchg", "ModelC")  = SUM(i,resCSchg_subreg(i,"simmod4_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"PSchg", "ModelC")  = SUM(i,resPSchg_subreg(i,"simmod4_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"NWFchg","ModelC")  = SUM(i,resWFchg_subreg(i,"simmod4_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+
+WelfareChangeRegion(FAOsubreg,"CSchg", "ModelD")  = SUM(i,resCSchg_subreg(i,"simmod5_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"PSchg", "ModelD")  = SUM(i,resPSchg_subreg(i,"simmod5_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
+WelfareChangeRegion(FAOsubreg,"NWFchg","ModelD")  = SUM(i,resWFchg_subreg(i,"simmod5_a100")* map_i_FAOsubreg(i,FAOsubreg)) ;
 
 ** Budget per capita
                                             
 BudgetPerCapita(FAOsubreg, "UnG") = SUM(i$map_i_FAOsubreg(i,FAOsubreg), Uwingabire_study(i,"Budget"));
 BudgetPerCapita(FAOsubreg, "ModelA") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R0(i) / FAOpop(i, "2010") );
-BudgetPerCapita(FAOsubreg, "ModelB_2010_scaled") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R02(i) / FAOpop(i, "2010") );
-BudgetPerCapita(FAOsubreg, "ModelB_2010") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R03(i) / FAOpop(i, "2010") );
-BudgetPerCapita(FAOsubreg, "ModelB_2020") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R04(i) / FAOpop(i, "2020") );
+BudgetPerCapita(FAOsubreg, "ModelB_scaled") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R02(i) / FAOpop(i, "2010") );
+BudgetPerCapita(FAOsubreg, "ModelB") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R03(i) / FAOpop(i, "2010") );
+BudgetPerCapita(FAOsubreg, "ModelC") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R04(i) / FAOpop(i, "2020") );
+BudgetPerCapita(FAOsubreg, "ModelD") = SUM(i$map_i_FAOsubreg(i,FAOsubreg),R05(i) / FAOpop(i, "2020") );
+
+** Micro-nutrient availability change across macro regions
+
+resNutrients_macroreg(reg,n,sim)  = SUM(FAOsubreg, map_reg_FAOsubreg(reg,FAOsubreg) * resNutrients_reg(FAOsubreg,n,sim) );
+resNutrients_macroreg("World",n,sim)  = SUM(reg, resNutrients_macroreg(reg,n,sim));
+
+resNutrients_macroreg_perc(reg,n,sim)$(sim1r(sim) and resNutrients_macroreg(reg,n,"Basemod1"))  = resNutrients_macroreg(reg,n,sim) / resNutrients_macroreg(reg,n,"Basemod1") -1 ; 
+resNutrients_macroreg_perc(reg,n,sim)$(sim2r(sim) and resNutrients_macroreg(reg,n,"Basemod2"))  = resNutrients_macroreg(reg,n,sim) / resNutrients_macroreg(reg,n,"Basemod2") -1 ; 
+resNutrients_macroreg_perc(reg,n,sim)$(sim3r(sim) and resNutrients_macroreg(reg,n,"Basemod3"))  = resNutrients_macroreg(reg,n,sim) / resNutrients_macroreg(reg,n,"Basemod3") -1 ; 
+resNutrients_macroreg_perc(reg,n,sim)$(sim4r(sim) and resNutrients_macroreg(reg,n,"Basemod4"))  = resNutrients_macroreg(reg,n,sim) / resNutrients_macroreg(reg,n,"Basemod4") -1 ; 
+resNutrients_macroreg_perc(reg,n,sim)$(sim5r(sim) and resNutrients_macroreg(reg,n,"Basemod5"))  = resNutrients_macroreg(reg,n,sim) / resNutrients_macroreg(reg,n,"Basemod5") -1 ; 
+
 
 Parameter
 value_shr_cropgroupCHK(cropgroup, modeltype)  Check if the sum of shares per crop group sum to 1;
 
 value_shr_cropgroupCHK(cropgroup, modeltype) = SUM(k, value_shr_cropgroup(k,cropgroup, modeltype))
+
+$INCLUDE FinalOutputs.gms
 
 *** END OF FILE ***

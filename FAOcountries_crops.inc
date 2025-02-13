@@ -1710,7 +1710,22 @@ kpollcrop(k)
 692 Vanillaraw
 /
 
-cropgroup/
+cropgroup_ext
+/
+Cereals
+RootsAndTubers
+Oilcrops
+SugarCrops
+Pulse
+Vegetables
+Treenuts
+Fruits
+Stimulants
+Spices
+Allcrops
+/
+
+cropgroup(cropgroup_ext)/
 Cereals
 RootsAndTubers
 Oilcrops
@@ -1722,6 +1737,7 @@ Fruits
 Stimulants
 Spices
 /
+
 
 mapping_k_cropgroup(k,cropgroup)
 /

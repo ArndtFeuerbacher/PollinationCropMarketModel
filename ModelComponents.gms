@@ -10,14 +10,31 @@ Parameter
 foodbudget0(i)           Food Budgets for sub-regions i in model A        
 foodbudget02(i)          Food Budgets for sub-regions i in model B scaled 
 foodbudget03(i)          Food Budgets for sub-regions i in model B 2010   
-foodbudget04(i)          Food Budgets for sub-regions i in model B 2020   
+foodbudget04(i)          Food Budgets for sub-regions i in model C 2020   
+foodbudget05(i)          Food Budgets for sub-regions i in model D 2020   
 
 budget_scaler           Food budget scaler to adjust budget based on producer prices to UG study
+
+prodvalue_shr_base0(k)   Base production value share in model A
+prodvalue_shr_base02(k)  Base production value share in model B scaled
+prodvalue_shr_base03(k)  Base production value share in model B 2010
+prodvalue_shr_base04(k)  Base production value share in model C 2020
+prodvalue_shr_base05(k)  Base production value share in model D 2020
+
+prodvalue_shr_base0CHK   Check base production value share in model A
+prodvalue_shr_base02CHK  Check base production value share in model B scaled
+prodvalue_shr_base03CHK  Check base production value share in model B 2010
+prodvalue_shr_base04CHK  Check base production value share in model C 2020
+prodvalue_shr_base05CHK  Check base production value share in model D 2020
+
 
 bshare(i,k)              Food budget shares for items k for sub regions i - Model A
 bshare2(i,k)             Food budget shares for items k for sub regions i - Model B scaled
 bshare3(i,k)             Food budget shares for items k for sub regions i - Model B 2010
-bshare4(i,k)             Food budget shares for items k for sub regions i - Model B 2020
+bshare4(i,k)             Food budget shares for items k for sub regions i - Model C 2020
+bshare5(i,k)             Food budget shares for items k for sub regions i - Model D 2020
+
+
 bshareCHK(i)            Check Parameter - budget shares have to sum up to one
 supplyslope(i,k)        Slope for Supply Curve
 
@@ -30,31 +47,44 @@ GlobalBal0(k)           Global Trade Balance
 PW0(k)                   Base World Market Prices in model A       
 PW02(k)                  Base World Market Prices in model B scaled
 PW03(k)                  Base World Market Prices in model B 2010  
-PW04(k)                  Base World Market Prices in model B 2020  
+PW04(k)                  Base World Market Prices in model C 2020
+PW05(k)                  Base World Market Prices in model D 2020
+
 Q0(i,k)                  Base Production in model A       
 Q02(i,k)                 Base Production in model B scaled
 Q03(i,k)                 Base Production in model B 2010  
-Q04(i,k)                 Base Production in model B 2020  
+Q04(i,k)                 Base Production in model C 2020
+Q05(i,k)                 Base Production in model D 2020
+
 P0(i,k)                  Base Prices in model A       
 P02(i,k)                 Base Prices in model B scaled
 P03(i,k)                 Base Prices in model B 2010  
-P04(i,k)                 Base Prices in model B 2020  
+P04(i,k)                 Base Prices in model C 2020
+P05(i,k)                 Base Prices in model D 2020
+
 X0(i,k)                  Base Demand in model A       
 X02(i,k)                 Base Demand in model B scaled
 X03(i,k)                 Base Demand in model B 2010  
-X04(i,k)                 Base Demand in model B 2020  
+X04(i,k)                 Base Demand in model C 2020
+X05(i,k)                 Base Demand in model D 2020
+
 NX0(i,k)                 Base Net-Exports in model A       
 NX02(i,k)                Base Net-Exports in model B scaled
 NX03(i,k)                Base Net-Exports in model B 2010  
-NX04(i,k)                Base Net-Exports in model B 2020  
+NX04(i,k)                Base Net-Exports in model C 2020
+NX05(i,k)                Base Net-Exports in model D 2020
+
 NX0inverse(i,k)          Base Net-Exports inverse in model A       
 NX02inverse(i,k)         Base Net-Exports inverse in model B scaled
 NX03inverse(i,k)         Base Net-Exports inverse in model B 2010  
-NX04inverse(i,k)         Base Net-Exports inverse in model B 2020  ´
+NX04inverse(i,k)         Base Net-Exports inverse in model C 2020  ´
+NX05inverse(i,k)         Base Net-Exports inverse in model D 2020  ´
+
 R0(i)                    Base food budget in model A       
 R02(i)                   Base food budget in model B scaled
 R03(i)                   Base food budget in model B 2010  
-R04(i)                   Base food budget in model B 2020  
+R04(i)                   Base food budget in model C 2020  
+R05(i)                   Base food budget in model D 2020  
 
 * Productivity shift and dependence ratios
 alpha(i,k)              Intensity of Pollinator Decline
@@ -107,6 +137,14 @@ PriceEq4                 Price Equation
 TradeBal4                Trade Balance
 NXeq4                    Next Exports Equation
 MCeq4                    Market Clearing
+
+* same equations for model C based on 2020 data and Siopa et al. dependence ratios (5)
+SupplyEq5                Supply Equation
+DemandEq5                Demand Equation
+PriceEq5                 Price Equation    
+TradeBal5                Trade Balance
+NXeq5                    Next Exports Equation
+MCeq5                    Market Clearing
 ;
 
 
@@ -123,6 +161,11 @@ year4(year)   Year used in Model B for 2020
 /
 2020
 /
+
+year5(year)   Year used in Model B for 2020 
+/
+2020
+/
 ;
 
 * For model v1 - replicating Urawing
@@ -130,7 +173,8 @@ Set
 k1(k) Subset of food items k which only include pollination dependent crops in model A       
 k2(k) Subset of food items k which only include pollination dependent crops in model B scaled
 k3(k) Subset of food items k which only include pollination dependent crops in model B 2010  
-k4(k) Subset of food items k which only include pollination dependent crops in model B 2020  
+k4(k) Subset of food items k which only include pollination dependent crops in model C 2020  
+k5(k) Subset of food items k which only include pollination dependent crops in model D 2020  
 
 ;
 
@@ -144,21 +188,26 @@ CHKbshare1           Sum of all budget shares
 onek2(k)            Parameter needed to count elements in k2
 sumk2               Sum of elements (food items) in k2
 
-onek3(k)            Parameter needed to count elements in k2
-sumk3               Sum of elements (food items) in k2
+onek3(k)            Parameter needed to count elements in k3
+sumk3               Sum of elements (food items) in k3
 
-onek4(k)            Parameter needed to count elements in k2
-sumk4               Sum of elements (food items) in k2
+onek4(k)            Parameter needed to count elements in k4
+sumk4               Sum of elements (food items) in k4
+
+onek5(k)            Parameter needed to count elements in k5
+sumk5               Sum of elements (food items) in k5
 
 ItemsIncluded(i,k)  
 ItemsIncluded2(i,k)  
 ItemsIncluded3(i,k)  
 ItemsIncluded4(i,k)  
+ItemsIncluded5(i,k)  
 testMC(k)  test market clearing
 testMC0(k)  test market clearing in model A       
 testMC02(k) test market clearing in model B scaled
 testMC03(k) test market clearing in model B 2010  
-testMC04(k) test market clearing in model B 2020  
+testMC04(k) test market clearing in model C 2020  
+testMC05(k) test market clearing in model C 2020  
 
 diffq03(i,k)
 diffx03(i,k)
@@ -200,7 +249,18 @@ simmod4_a005            5% pollinator decline in Model B for 2020
 simmod4_a050            50% pollinator decline in Model B for 2020 
 simmod4_01*simmod4_10   Auxiliary simulations in Model B for 2020 
       
-simmod4_a100            100% pollinator decline in Model B for 2020 
+simmod4_a100            100% pollinator decline in Model B for 2020
+
+* Scenarios for Model C for 2020 
+Basemod5
+
+simmod5_a005            5% pollinator decline in Model C for 2020 
+simmod5_a050            50% pollinator decline in Model C for 2020 
+simmod5_01*simmod5_10   Auxiliary simulations in Model C for 2020 
+      
+simmod5_a100            100% pollinator decline in Model C for 2020
+
+
 /
 
 sim1(sim)       Simulations run with Model A
@@ -219,7 +279,7 @@ simmod1_a050
 simmod1_a100
 
 /
-sim2(sim)       Simulations run with Model B for 2010 unscaled
+sim2(sim)       Simulations run with Model B_scaled for 2010 - scaled on UnG Budget
 /
 Basemod2              
                       
@@ -230,7 +290,7 @@ simmod2_a050
 simmod2_a100          
 /
 
-sim2r(sim)      Simulations run with Model B for 2010 unscaled that are reported
+sim2r(sim)      Simulations run with Model B_scaled for 2010  that are reported - scaled on UnG Budget
 /
 Basemod2
 simmod2_a005       
@@ -258,7 +318,7 @@ simmod3_a050
 simmod3_a100            
 /
 
-sim4(sim)       Simulations run with Model B for 2020 
+sim4(sim)       Simulations run with Model C for 2020 
 /
 Basemod4
 
@@ -269,7 +329,7 @@ simmod4_a050
 simmod4_a100                    
 /
 
-sim4r(sim)      Simulations run with Model B for 2020 that are reported
+sim4r(sim)      Simulations run with Model C for 2020 that are reported
 /
 Basemod4
 
@@ -277,6 +337,43 @@ simmod4_a005
 simmod4_a050            
 simmod4_a100            
 /
+
+sim5(sim)       Simulations run with Model D for 2020 
+/
+Basemod5
+
+simmod5_a005            
+simmod5_a050            
+*simmod4_01*simmod4_10   
+
+simmod5_a100                    
+/
+
+sim5r(sim)      Simulations run with Model D for 2020 that are reported
+/
+Basemod5
+
+simmod5_a005            
+simmod5_a050            
+simmod5_a100            
+/
+
+sim_final(sim)
+/
+simmod1_a100 
+simmod3_a100 
+simmod4_a100 
+simmod5_a100 
+/
+
+map_sim_modeltype(sim,modeltype)
+/
+simmod1_a100.ModelA 
+simmod3_a100.ModelB 
+simmod4_a100.ModelC 
+simmod5_a100.ModelD
+/
+
 ;
 
 *sim2r(sim)$sim2(sim) = YES;
@@ -297,7 +394,11 @@ value_shr_pollcrops_base3(k)       production value share in the base Model B fo
 
 value_shr_base4(k)       production value share in the base Model B for 2020 
 value_shr_crops_base4(k)       production value share in the base Model B for 2020 
-value_shr_pollcrops_base4(k)       production value share in the base Model B for 2020 
+value_shr_pollcrops_base4(k)       production value share in the base Model B for 2020
+
+value_shr_base5(k)       production value share in the base Model C for 2020 
+value_shr_crops_base5(k)       production value share in the base Model C for 2020 
+value_shr_pollcrops_base5(k)       production value share in the base Model C for 2020 
 
 value_shr_sim(k, sim)   production value share of each simulation
 
@@ -338,6 +439,12 @@ PollChange("simmod4_a005") = 0.05;
 PollChange("simmod4_a050") = 0.50;
 PollChange("simmod4_a100") = 1;
 
+* Shocks for Model C for 2020 
+PollChange("Basemod5") = 0 ;
+PollChange("simmod5_a005") = 0.05;
+PollChange("simmod5_a050") = 0.50;
+PollChange("simmod5_a100") = 1;
+
 *** Result sets and parameters
 
 Set
@@ -346,7 +453,9 @@ ind
 World_Market_Price
 Global_Production
 Global_Demand
-Global_NetExports
+
+Global_Production_wgt
+Global_Demand_wgt
 /;
 
 Parameter
@@ -381,22 +490,27 @@ resGlobalPriceObsCropName(cropname,modeltype)   Parameter equal 1 if there is a 
 resGlobalPriceTotalObs(modeltype)               Total number of crops included in the model 
 resGlobalFoodPrice_avg(sim)                     Simple average change in food prices
 resGlobalCropPrice_avg(sim)                     Simple average change in global crop prices  
-resGlobalPollPrice_avg(sim)                     Simple average change in global pollination dependent crop prices  
-   
+resGlobalPollPrice_avg(sim)                     Simple average change in global pollination dependent crop prices   
+
 resGlobalPriceObs_CropGroup(cropgroup,k,modeltype)  Numer of edible crop items (obs) per crop group
 
-resGlobalCropGroupPrice_avg(cropgroup,sim)      Price per crop group - simple average    
-resGlobalCropGroupPrice_wgt(cropgroup,sim)      Weighted average crop price 
+resGlobalCropGroupPrice_avg(cropgroup_ext,sim)  Price per crop group - simple average    
+resGlobalCropGroupPrice_wgt(cropgroup_ext,sim)      Weighted average crop price 
 
 resTradeBalance(FAOsubreg,cropgroup,sim)        Trade Balance by cropgroup and FAO subregion in billion USD
 resTradeBalance_regional(reg,cropgroup,sim)     Trade Balance by cropgroup and continental region in billion USD
 
+resFoodDemand_reg(FAOsubreg,k,sim)                Food demand per FAO region
+resFoodDemand_reg_perc(FAOsubreg,k,sim)           Percentage change in food demand per FAO region
 
-resFoodDemand_reg(FAOsubreg,sim)                Food demand per FAO region
-resFoodDemand_reg_perc(FAOsubreg,sim)           Percentage change in food demand per FAO region
+resTotalFoodDemand_reg(FAOsubreg,sim)                Food demand per FAO region
+resTotalFoodDemand_reg_perc(FAOsubreg_ext,sim)           Percentage change in food demand per FAO region
 
-resFoodDemandValue_reg(FAOsubreg,sim)           Food demand value per FAO region
-resFoodDemandValue_reg_perc(FAOsubreg,sim)      Percentage change in food demand value per FAO region
+resFoodDemand_macroreg_cropgroup(reg,cropgroup,sim)       Macro-Regional change in food demand per crop group   
+resFoodDemand_macroreg_cropgroup_perc(reg,cropgroup,sim)  Percentage Change in Macro-Regional change in food demand per crop group 
+
+resTotalFoodDemandValue_reg(FAOsubreg,sim)           Food demand value per FAO region
+resTotalFoodDemandValue_reg_perc(FAOsubreg,sim)      Percentage change in food demand value per FAO region
 
 resFoodProd_reg(FAOsubreg,sim)                  Food production per FAO region
 resFoodProd_reg_perc(FAOsubreg,sim)             Percentage change in food production per FAO region
@@ -405,10 +519,12 @@ resFoodProd_reg_perc(FAOsubreg,sim)             Percentage change in food produc
 resNutrients_reg(FAOsubreg,n,sim)               Regional nutrient availability for consumption
 resNutrients_reg_pc(FAOsubreg,n,sim)            Regional nutrient availability for consumption per capita
 resNutrients_reg_abs_pc(FAOsubreg,n,sim)        Absolute change in regional nutrient availability for consumption per capita
-resNutrients_reg_perc(FAOsubreg,n,sim)          Percentage change in regional nutrient availability for consumption
+resNutrients_reg_perc(FAOsubreg_ext,n,sim)          Percentage change in regional nutrient availability for consumption
 resGlobalNutrients(n,sim)                       Global nutrient availability for consumption
 resGlobalNutrients_perc(n,sim)                  Percentage change in global nutrient availability for consumption
   
+resNutrients_macroreg(reg,n,sim)                Macro-Regional nutrient availability for consumption
+resNutrients_macroreg_perc(reg,n,sim)           Percentage Change in macro-Regional nutrient availability for consumption
 
 ** welfare change parameters
 
@@ -442,8 +558,8 @@ resWFchg_subreg_perc(i,sim)                     Welfare change for sub-region i 
 resWFchg_global_perc(sim)                       Total global welfare change in percent
 
 ** Comparison of welfare changes across model
-ModelComparison(modeltype,Table4)               Global welfare results of 100% pollinator decline by model type
-WelfareChangeRegion(FAOsubreg,Table4,modeltype) Regional change in welfare
+ModelComparison(modeltype,table4_UnG)               Global welfare results of 100% pollinator decline by model type
+WelfareChangeRegion(FAOsubreg,table4_UnG,modeltype) Regional change in welfare
 BudgetPerCapita(FAOsubreg, modeltype)           Edible crop consumption budget per capita
 ;
 

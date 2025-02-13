@@ -1,0 +1,2161 @@
+--- Job Main file.gms Start 02/13/25 12:56:54 46.4.0 2cbe6e3b DEX-DEG x86 64bit/macOS
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/46/Resources/gmsprmun.txt
+    /Users/ArndtF/Library/Preferences/GAMS/gamsconfig.yaml
+--- GAMS Parameters defined
+    Input "/Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/Main file.gms"
+    PageSize 0
+    ScrDir /Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/225a/
+    SysDir /Library/Frameworks/GAMS.framework/Versions/46/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    GDX "/Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/Main file.gdx"
+    LstTitleLeftAligned 1
+Licensee: Medium MUD-10 User License                     S240416|0002AO-GEN
+          University of Hohenheim, Dept. of Agricultural Markets DC15335-S9
+          /Users/ArndtF/Library/Application Support/GAMS/gamslice.txt
+          License Admin: Sebastian Hess, s.hess@uni-hohenheim.de           
+          The maintenance period of the license will expire on May 11, 2025
+Processor information: 1 socket(s), 11 core(s), and 11 thread(s) available
+GAMS 46.4.0   Copyright (C) 1987-2024 GAMS Development. All rights reserved
+--- Starting compilation
+--- Main file.gms(13) 2 Mb
+--- . Model_sets.inc(294) 4 Mb
+--- .. FAOcountries_crops.inc(2431) 4 Mb
+--- . Model_sets.inc(300) 4 Mb
+--- Main file.gms(148) 4 Mb
+--- GDXin=/Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/replication_data.gdx
+--- GDX File ($gdxIn) /Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/replication_data.gdx
+--- Main file.gms(311) 7 Mb
+--- . PollinationDepGlobalShareCalc.gms(110) 7 Mb
+--- Main file.gms(313) 7 Mb
+--- . ModelComponents.gms(567) 7 Mb
+--- Main file.gms(314) 7 Mb
+--- . Model A.gms(348) 7 Mb
+--- Main file.gms(317) 7 Mb
+--- . Model B_scaled.gms(385) 7 Mb
+--- Main file.gms(318) 7 Mb
+--- . Model B.gms(376) 7 Mb
+--- Main file.gms(319) 7 Mb
+--- . Model C.gms(360) 7 Mb
+--- Main file.gms(320) 7 Mb
+--- . Model D.gms(367) 7 Mb
+--- Main file.gms(502) 7 Mb
+--- . FinalOutputs.gms(128) 7 Mb
+--- Main file.gms(504) 7 Mb
+--- Starting execution: elapsed 0:00:00.033
+--- Main file.gms(3897) 13 Mb
+--- Generating MCP model ModelA
+--- Main file.gms(3899) 19 Mb
+---   12,439 rows  13,453 columns  37,946 non-zeroes
+---   1,014 fixed-and-unmatched column(s) will be treated as constant
+---   34,607 nl-code  13,310 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.364E+09, 2.704E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.261E-09, 7.205E+08]
+--- Main file.gms(3899) 16 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:00.831
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12439 row/cols, 33300 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPC: Zer:    0 One: 2662 Two:    0 Thr:    0
+Preprocessed size   : 9777
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (MCeq(56))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq(5,156))
+Maximum Column Norm . . . . . .  2.1037e+07 var: (P(30,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (Q(5,156))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.8221e-07             0.0e+00 (MCeq(56))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 1.8221e-07           I 0.0e+00 1.2e-07 (MCeq(56))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.4890e-05 eqn: (MCeq(399))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (MCeq(56))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (MCeq(56))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (MCeq(56))
+Inf-Norm of Grad Fischer Fcn. .  1.5452e-05 eqn: (SupplyEq(13,692))
+Two-Norm of Grad Fischer Fcn. .  1.5631e-05
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (MCeq(56))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016590
+Residual. . . . . . . . 1.822127e-07
+Postsolved residual: 1.8221e-07
+
+--- Reading solution for model ModelA
+--- Executing after solve: elapsed 0:00:01.001
+--- Main file.gms(3902) 16 Mb
+--- Generating MCP model ModelA
+--- Main file.gms(3908) 19 Mb
+--- LOOPS* = Basemod1
+---   12,439 rows  13,453 columns  37,946 non-zeroes
+---   1,014 fixed-and-unmatched column(s) will be treated as constant
+---   34,607 nl-code  13,310 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.364E+09, 2.704E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.261E-09, 7.205E+08]
+--- Main file.gms(3908) 17 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:01.035
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12439 row/cols, 33300 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPC: Zer:    0 One: 2662 Two:    0 Thr:    0
+Preprocessed size   : 9777
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (MCeq(56))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq(5,156))
+Maximum Column Norm . . . . . .  2.1037e+07 var: (P(30,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (Q(5,156))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.8221e-07             0.0e+00 (MCeq(56))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 1.8221e-07           I 0.0e+00 1.2e-07 (MCeq(56))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.4890e-05 eqn: (MCeq(399))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (MCeq(56))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (MCeq(56))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (MCeq(56))
+Inf-Norm of Grad Fischer Fcn. .  1.5452e-05 eqn: (SupplyEq(13,692))
+Two-Norm of Grad Fischer Fcn. .  1.5631e-05
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (MCeq(56))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000004
+Total Time. . . . . . . 0.015883
+Residual. . . . . . . . 1.822127e-07
+Postsolved residual: 1.8221e-07
+
+--- Reading solution for model ModelA
+--- Executing after solve: elapsed 0:00:01.188
+--- Main file.gms(3902) 18 Mb
+--- Generating MCP model ModelA
+--- Main file.gms(3908) 21 Mb
+--- LOOPS* = simmod1_a005
+---   12,439 rows  13,453 columns  37,946 non-zeroes
+---   1,014 fixed-and-unmatched column(s) will be treated as constant
+---   34,607 nl-code  13,310 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.364E+09, 2.704E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.261E-09, 7.205E+08]
+--- Main file.gms(3908) 19 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:01.287
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12439 row/cols, 33300 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPC: Zer:    0 One: 2662 Two:    0 Thr:    0
+Preprocessed size   : 9777
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  3.2682e+05 eqn: (SupplyEq(13,692))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq(5,156))
+Maximum Column Norm . . . . . .  2.1037e+07 var: (P(30,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (Q(5,156))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.7323e+06             0.0e+00 (SupplyEq(61,692))
+    1     1     0  9777 2.9544e+04  1.0e+00    0.0e+00 (DemandEq(30,567))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     2     2 2.9544e+04           I 0.0e+00 2.2e+04 (DemandEq(30,567)
+    1     1     3     3 3.9556e+00  1.0e+00 SO 0.0e+00 3.3e+00 (DemandEq(30,567)
+    2     1     4     4 2.3128e-07  1.0e+00 SO 0.0e+00 1.3e-07 (MCeq(156))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  2.0795e+01 eqn: (DemandEq(30,56))
+Inf-Norm of Normal Map. . . . .  1.3411e-07 eqn: (MCeq(156))
+Inf-Norm of Minimum Map . . . .  1.3411e-07 eqn: (MCeq(156))
+Inf-Norm of Fischer Function. .  1.3411e-07 eqn: (MCeq(156))
+Inf-Norm of Grad Fischer Fcn. .  2.5078e+00 eqn: (PriceEq(30,156))
+Two-Norm of Grad Fischer Fcn. .  2.5369e+00
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.3411e-07 eqn: (MCeq(156))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 2
+Minor Iterations. . . . 2
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 4
+Gradient Evaluations. . 4
+Basis Time. . . . . . . 0.006933
+Total Time. . . . . . . 0.037476
+Residual. . . . . . . . 2.312825e-07
+Postsolved residual: 2.3128e-07
+
+--- Reading solution for model ModelA
+--- Executing after solve: elapsed 0:00:01.459
+--- Main file.gms(3902) 19 Mb
+--- Generating MCP model ModelA
+--- Main file.gms(3908) 22 Mb
+--- LOOPS* = simmod1_a050
+---   12,439 rows  13,453 columns  37,946 non-zeroes
+---   1,014 fixed-and-unmatched column(s) will be treated as constant
+---   34,607 nl-code  13,310 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.364E+09, 2.704E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.231E-09, 7.205E+08]
+--- Main file.gms(3908) 20 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:01.558
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12439 row/cols, 33300 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPC: Zer:    0 One: 2662 Two:    0 Thr:    0
+Preprocessed size   : 9777
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  5.4679e+06 eqn: (SupplyEq(54,692))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq(5,156))
+Maximum Column Norm . . . . . .  2.1037e+07 var: (P(30,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (Q(5,156))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.9023e+07             0.0e+00 (SupplyEq(61,692))
+    1     1     0  9777 3.2877e+06  1.0e+00    0.0e+00 (DemandEq(30,567))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     2     2 3.2877e+06           I 0.0e+00 2.5e+06 (DemandEq(30,567)
+    1     1     3     3 6.3306e+04  1.0e+00 SO 0.0e+00 5.3e+04 (DemandEq(30,567)
+    2     1     4     4 2.9809e+01  1.0e+00 SO 0.0e+00 2.5e+01 (DemandEq(30,567)
+    3     1     5     5 6.7964e-06  1.0e+00 SO 0.0e+00 5.8e-06 (DemandEq(30,567)
+    4     1     6     6 2.1955e-07  1.0e+00 SO 0.0e+00 1.8e-07 (MCeq(156))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  2.0795e+01 eqn: (DemandEq(30,56))
+Inf-Norm of Normal Map. . . . .  1.7881e-07 eqn: (MCeq(156))
+Inf-Norm of Minimum Map . . . .  1.7881e-07 eqn: (MCeq(156))
+Inf-Norm of Fischer Function. .  1.7881e-07 eqn: (MCeq(156))
+Inf-Norm of Grad Fischer Fcn. .  3.2461e-01 eqn: (PriceEq(30,56))
+Two-Norm of Grad Fischer Fcn. .  3.4059e-01
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.7881e-07 eqn: (MCeq(156))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 4
+Minor Iterations. . . . 4
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 6
+Gradient Evaluations. . 6
+Basis Time. . . . . . . 0.010820
+Total Time. . . . . . . 0.049643
+Residual. . . . . . . . 2.195540e-07
+Postsolved residual: 2.1955e-07
+
+--- Reading solution for model ModelA
+--- Executing after solve: elapsed 0:00:01.745
+--- Main file.gms(3902) 20 Mb
+--- Generating MCP model ModelA
+--- Main file.gms(3908) 23 Mb
+--- LOOPS* = simmod1_a100
+---   12,439 rows  13,453 columns  37,946 non-zeroes
+---   1,014 fixed-and-unmatched column(s) will be treated as constant
+---   34,607 nl-code  13,310 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.364E+09, 2.704E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 9.137E-10, 7.205E+08]
+--- Main file.gms(3908) 21 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:01.848
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12439 row/cols, 33300 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPC: Zer:    0 One: 2662 Two:    0 Thr:    0
+Preprocessed size   : 9777
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  8.5925e+07 eqn: (SupplyEq(30,692))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq(5,156))
+Maximum Column Norm . . . . . .  2.1037e+07 var: (P(30,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (Q(5,156))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             4.5512e+08             0.0e+00 (SupplyEq(61,692))
+    1     1     0  9777 2.0254e+07  1.0e+00    0.0e+00 (DemandEq(30,567))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     2     2 2.0254e+07           I 0.0e+00 1.7e+07 (DemandEq(30,567)
+    1     1     3     3 3.7229e+06  1.0e+00 SO 0.0e+00 3.2e+06 (DemandEq(30,567)
+    2     1     4     4 2.4783e+05  1.0e+00 SO 0.0e+00 2.1e+05 (DemandEq(30,567)
+    3     1     5     5 1.4866e+03  1.0e+00 SO 0.0e+00 1.3e+03 (DemandEq(30,567)
+    4     1     6     6 5.4805e-02  1.0e+00 SO 0.0e+00 4.7e-02 (DemandEq(30,567)
+    5     1     7     7 9.0115e-08  1.0e+00 SO 0.0e+00 4.5e-08 (MCeq(56))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.5384e+00 eqn: (DemandEq(30,125))
+Inf-Norm of Normal Map. . . . .  4.4703e-08 eqn: (MCeq(56))
+Inf-Norm of Minimum Map . . . .  4.4703e-08 eqn: (MCeq(56))
+Inf-Norm of Fischer Function. .  4.4703e-08 eqn: (MCeq(56))
+Inf-Norm of Grad Fischer Fcn. .  3.5927e-02 eqn: (PriceEq(145,156))
+Two-Norm of Grad Fischer Fcn. .  4.3024e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  4.4703e-08 eqn: (MCeq(56))
+Maximum of Grad F . . . . . . .  2.1037e+07 eqn: (DemandEq(30,156))
+                                            var: (P(30,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 5
+Minor Iterations. . . . 5
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 7
+Gradient Evaluations. . 7
+Basis Time. . . . . . . 0.013703
+Total Time. . . . . . . 0.056678
+Residual. . . . . . . . 9.011485e-08
+Postsolved residual: 9.0115e-08
+
+--- Reading solution for model ModelA
+--- Executing after solve: elapsed 0:00:02.037
+--- Main file.gms(4293) 22 Mb
+--- Generating MCP model ModelB_scaled
+--- Main file.gms(4295) 24 Mb
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 2.290E+08, 1.832E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.275E-12, 7.674E+07] - Zero values observed as well
+--- Main file.gms(4295) 22 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:02.471
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq2(92))
+Maximum Column Norm . . . . . .  2.3175e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             5.8854e-08             0.0e+00 (DemandEq2(30,56))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 5.8854e-08           I 0.0e+00 3.0e-08 (DemandEq2(30,56)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  6.2815e+00 eqn: (DemandEq2(30,56))
+Inf-Norm of Normal Map. . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Inf-Norm of Minimum Map . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Inf-Norm of Fischer Function. .  2.9802e-08 eqn: (DemandEq2(30,56))
+Inf-Norm of Grad Fischer Fcn. .  8.6011e-03 eqn: (PriceEq2(30,56))
+Two-Norm of Grad Fischer Fcn. .  1.1693e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016925
+Residual. . . . . . . . 5.885405e-08
+Postsolved residual: 5.8854e-08
+
+--- Reading solution for model ModelB_scaled
+--- Executing after solve: elapsed 0:00:02.620
+--- Main file.gms(4297) 22 Mb
+--- Generating MCP model ModelB_scaled
+--- Main file.gms(4303) 25 Mb
+--- LOOPS* = Basemod2
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 2.290E+08, 1.832E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.275E-12, 7.674E+07] - Zero values observed as well
+--- Main file.gms(4303) 23 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:02.654
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq2(92))
+Maximum Column Norm . . . . . .  2.3175e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             5.8854e-08             0.0e+00 (DemandEq2(30,56))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 5.8854e-08           I 0.0e+00 3.0e-08 (DemandEq2(30,56)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  6.2815e+00 eqn: (DemandEq2(30,56))
+Inf-Norm of Normal Map. . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Inf-Norm of Minimum Map . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Inf-Norm of Fischer Function. .  2.9802e-08 eqn: (DemandEq2(30,56))
+Inf-Norm of Grad Fischer Fcn. .  8.6011e-03 eqn: (PriceEq2(30,56))
+Two-Norm of Grad Fischer Fcn. .  1.1693e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  2.9802e-08 eqn: (DemandEq2(30,56))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016737
+Residual. . . . . . . . 5.885405e-08
+Postsolved residual: 5.8854e-08
+
+--- Reading solution for model ModelB_scaled
+--- Executing after solve: elapsed 0:00:02.804
+--- Main file.gms(4297) 23 Mb
+--- Generating MCP model ModelB_scaled
+--- Main file.gms(4303) 26 Mb
+--- LOOPS* = simmod2_a005
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 2.290E+08, 1.832E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.275E-12, 7.674E+07] - Zero values observed as well
+--- Main file.gms(4303) 24 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:02.868
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  6.6814e+02 eqn: (SupplyEq2(13,702))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq2(92))
+Maximum Column Norm . . . . . .  2.3175e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             3.7139e+03             0.0e+00 (SupplyEq2(11,702))
+    1     6     0  8703 3.2900e+03  1.7e-01    0.0e+00 (SupplyEq2(11,702))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     7     2 3.2900e+03           I 0.0e+00 1.1e+03 (SupplyEq2(11,70)
+    1     1    10     3 1.2432e+04  6.4e-01 SB 0.0e+00 1.1e+04 (DemandEq2(30,56)
+    2     1    11     4 3.8399e+03  1.0e+00 SO 0.0e+00 3.3e+03 (DemandEq2(30,56)
+    3     1    12     5 4.8130e-02  1.0e+00 SO 0.0e+00 4.5e-02 (DemandEq2(30,56)
+    4     1    13     6 9.8597e-08  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq2(35,27)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.2714e+01 eqn: (DemandEq2(34,27))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq2(34,27))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq2(34,27))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq2(35,27))
+Inf-Norm of Grad Fischer Fcn. .  2.8570e-02 eqn: (PriceEq2(35,254))
+Two-Norm of Grad Fischer Fcn. .  3.4050e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq2(34,27))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 4
+Minor Iterations. . . . 4
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 13
+Gradient Evaluations. . 6
+Basis Time. . . . . . . 0.010065
+Total Time. . . . . . . 0.056658
+Residual. . . . . . . . 9.859732e-08
+Postsolved residual: 9.8597e-08
+
+--- Reading solution for model ModelB_scaled
+--- Executing after solve: elapsed 0:00:03.059
+--- Main file.gms(4297) 24 Mb
+--- Generating MCP model ModelB_scaled
+--- Main file.gms(4303) 27 Mb
+--- LOOPS* = simmod2_a050
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 2.290E+08, 1.832E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 4.441E-16, 7.626E+07] - Zero values observed as well
+--- Main file.gms(4303) 25 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:03.126
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  8.7626e+03 eqn: (SupplyEq2(35,702))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq2(92))
+Maximum Column Norm . . . . . .  2.3175e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             5.9597e+04             0.0e+00 (SupplyEq2(11,702))
+    1     8     0  8703 5.8006e+04  2.8e-02    0.0e+00 (SupplyEq2(11,702))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     9     2 5.8006e+04           I 0.0e+00 1.7e+04 (SupplyEq2(11,70)
+    1     1    15     3 2.3257e+05  2.1e-01 SB 0.0e+00 2.0e+05 (DemandEq2(30,56)
+    2     1    22     4 2.5889e+05  1.3e-01 SB 0.0e+00 2.3e+05 (DemandEq2(30,56)
+    3     1    23     5 2.1169e+06  1.0e+00 SD 0.0e+00 1.9e+06 (DemandEq2(30,56)
+    4     1    24     6 1.9634e+04  1.0e+00 SO 0.0e+00 1.9e+04 (DemandEq2(30,56)
+    5     1    25     7 1.9990e+00  1.0e+00 SO 0.0e+00 1.9e+00 (DemandEq2(30,56)
+    6     1    26     8 5.8271e-08  1.0e+00 SO 0.0e+00 3.0e-08 (DemandEq2(35,25)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.6834e+00 eqn: (DemandEq2(30,156))
+Inf-Norm of Normal Map. . . . .  2.9802e-08 eqn: (DemandEq2(35,254))
+Inf-Norm of Minimum Map . . . .  2.9802e-08 eqn: (DemandEq2(35,254))
+Inf-Norm of Fischer Function. .  2.9802e-08 eqn: (DemandEq2(35,254))
+Inf-Norm of Grad Fischer Fcn. .  2.7925e-02 eqn: (PriceEq2(35,254))
+Two-Norm of Grad Fischer Fcn. .  2.8430e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  2.9802e-08 eqn: (DemandEq2(35,254))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 6
+Minor Iterations. . . . 6
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 26
+Gradient Evaluations. . 8
+Basis Time. . . . . . . 0.014148
+Total Time. . . . . . . 0.082326
+Residual. . . . . . . . 5.827121e-08
+Postsolved residual: 5.8271e-08
+
+--- Reading solution for model ModelB_scaled
+--- Executing after solve: elapsed 0:00:03.339
+--- Main file.gms(4297) 25 Mb
+--- Generating MCP model ModelB_scaled
+--- Main file.gms(4303) 28 Mb
+--- LOOPS* = simmod2_a100
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 2.290E+08, 1.832E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 8.882E-16, 7.179E+07] - Zero values observed as well
+--- Main file.gms(4303) 26 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:03.400
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  6.4127e+04 eqn: (SupplyEq2(13,299))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq2(92))
+Maximum Column Norm . . . . . .  2.3175e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             5.4478e+05             0.0e+00 (SupplyEq2(13,299))
+    1     7     0  8703 5.2752e+05  6.9e-02    0.0e+00 (DemandEq2(30,567))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     8     2 5.2752e+05           I 0.0e+00 1.4e+05 (DemandEq2(30,56)
+    1     1    14     3 1.3097e+06  2.1e-01 SB 0.0e+00 1.2e+06 (DemandEq2(30,56)
+    2     1    15     4 1.8194e+07  1.0e+00 SD 0.0e+00 1.7e+07 (DemandEq2(30,56)
+    3     1    16     5 2.5496e+06  1.0e+00 SD 0.0e+00 2.4e+06 (DemandEq2(30,56)
+    4     1    17     6 9.4520e+04  1.0e+00 SO 0.0e+00 9.0e+04 (DemandEq2(30,56)
+    5     1    18     7 1.5244e+02  1.0e+00 SO 0.0e+00 1.5e+02 (DemandEq2(30,56)
+    6     1    19     8 3.9905e-04  1.0e+00 SO 0.0e+00 3.8e-04 (DemandEq2(30,56)
+    7     1    20     9 7.7341e-08  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq2(35,27)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.9164e+00 eqn: (DemandEq2(30,15))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq2(35,27))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq2(35,27))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq2(35,27))
+Inf-Norm of Grad Fischer Fcn. .  2.7209e-02 eqn: (PriceEq2(35,254))
+Two-Norm of Grad Fischer Fcn. .  3.0044e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq2(35,27))
+Maximum of Grad F . . . . . . .  2.3175e+06 eqn: (DemandEq2(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 7
+Minor Iterations. . . . 7
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 20
+Gradient Evaluations. . 9
+Basis Time. . . . . . . 0.015557
+Total Time. . . . . . . 0.077000
+Residual. . . . . . . . 7.734150e-08
+Postsolved residual: 7.7341e-08
+
+--- Reading solution for model ModelB_scaled
+--- Executing after solve: elapsed 0:00:03.611
+--- Main file.gms(4669) 27 Mb
+--- Generating MCP model ModelB
+--- Main file.gms(4671) 29 Mb
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.190E+08, 9.523E+11] - Zero values observed as well
+--- Matrix    [min, max] : [ 2.453E-12, 7.674E+07] - Zero values observed as well
+--- Main file.gms(4671) 27 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:04.014
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq3(92))
+Maximum Column Norm . . . . . .  4.4580e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.2408e-07             0.0e+00 (DemandEq3(5,156))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 1.2408e-07           I 0.0e+00 1.2e-07 (DemandEq3(5,156)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  4.8472e-01 eqn: (DemandEq3(151,15))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Grad Fischer Fcn. .  5.3144e-01 eqn: (PriceEq3(5,156))
+Two-Norm of Grad Fischer Fcn. .  5.3144e-01
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016400
+Residual. . . . . . . . 1.240826e-07
+Postsolved residual: 1.2408e-07
+
+--- Reading solution for model ModelB
+--- Executing after solve: elapsed 0:00:04.159
+--- Main file.gms(4674) 27 Mb
+--- Generating MCP model ModelB
+--- Main file.gms(4680) 30 Mb
+--- LOOPS* = Basemod3
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.190E+08, 9.523E+11] - Zero values observed as well
+--- Matrix    [min, max] : [ 2.453E-12, 7.674E+07] - Zero values observed as well
+--- Main file.gms(4680) 27 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:04.196
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq3(92))
+Maximum Column Norm . . . . . .  4.4580e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.2408e-07             0.0e+00 (DemandEq3(5,156))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 1.2408e-07           I 0.0e+00 1.2e-07 (DemandEq3(5,156)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  4.8472e-01 eqn: (DemandEq3(151,15))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Grad Fischer Fcn. .  5.3144e-01 eqn: (PriceEq3(5,156))
+Two-Norm of Grad Fischer Fcn. .  5.3144e-01
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016038
+Residual. . . . . . . . 1.240826e-07
+Postsolved residual: 1.2408e-07
+
+--- Reading solution for model ModelB
+--- Executing after solve: elapsed 0:00:04.341
+--- Main file.gms(4674) 29 Mb
+--- Generating MCP model ModelB
+--- Main file.gms(4680) 31 Mb
+--- LOOPS* = simmod3_a005
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.190E+08, 9.523E+11] - Zero values observed as well
+--- Matrix    [min, max] : [ 2.453E-12, 7.674E+07] - Zero values observed as well
+--- Main file.gms(4680) 29 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:04.404
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  3.4733e+02 eqn: (SupplyEq3(11,702))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq3(92))
+Maximum Column Norm . . . . . .  4.4580e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.8728e+03             0.0e+00 (SupplyEq3(11,702))
+    1     7     0  8703 1.7504e+03  6.9e-02    0.0e+00 (SupplyEq3(11,702))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     8     2 1.7504e+03           I 0.0e+00 6.2e+02 (SupplyEq3(11,70)
+    1     1    13     3 4.2445e+03  3.3e-01 SB 0.0e+00 3.5e+03 (DemandEq3(30,56)
+    2     1    14     4 1.6458e+04  1.0e+00 SD 0.0e+00 1.4e+04 (DemandEq3(30,56)
+    3     1    15     5 8.8218e-01  1.0e+00 SO 0.0e+00 8.2e-01 (DemandEq3(30,56)
+    4     1    16     6 8.6221e-08  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq3(21,56)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.6577e+01 eqn: (DemandEq3(21,56))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq3(21,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq3(21,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq3(21,56))
+Inf-Norm of Grad Fischer Fcn. .  4.3662e-02 eqn: (PriceEq3(21,56))
+Two-Norm of Grad Fischer Fcn. .  4.4989e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq3(21,56))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 4
+Minor Iterations. . . . 4
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 16
+Gradient Evaluations. . 6
+Basis Time. . . . . . . 0.009803
+Total Time. . . . . . . 0.060974
+Residual. . . . . . . . 8.622095e-08
+Postsolved residual: 8.6221e-08
+
+--- Reading solution for model ModelB
+--- Executing after solve: elapsed 0:00:04.599
+--- Main file.gms(4674) 30 Mb
+--- Generating MCP model ModelB
+--- Main file.gms(4680) 32 Mb
+--- LOOPS* = simmod3_a050
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.190E+08, 9.523E+11] - Zero values observed as well
+--- Matrix    [min, max] : [ 4.441E-16, 7.626E+07] - Zero values observed as well
+--- Main file.gms(4680) 30 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:04.665
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  4.5552e+03 eqn: (SupplyEq3(29,702))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq3(92))
+Maximum Column Norm . . . . . .  4.4580e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.9701e+04             0.0e+00 (SupplyEq3(11,702))
+    1     8     0  8703 2.9171e+04  2.8e-02    0.0e+00 (SupplyEq3(11,702))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     9     2 2.9171e+04           I 0.0e+00 8.8e+03 (SupplyEq3(11,70)
+    1     1    16     3 1.0068e+05  1.3e-01 SB 0.0e+00 8.7e+04 (DemandEq3(30,56)
+    2     1    24     4 1.0673e+05  5.5e-02 SB 0.0e+00 9.2e+04 (DemandEq3(30,56)
+    3     1    32     5 1.1122e+05  5.5e-02 SB 0.0e+00 9.7e+04 (DemandEq3(30,56)
+    4     1    40     6 1.1433e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq3(30,56)
+    5     1    48     7 1.1627e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq3(30,56)
+    6     1    56     8 1.1720e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq3(30,56)
+    7     1    64     9 1.1728e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq3(30,56)
+    8     1    72    10 1.1663e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq3(30,56)
+    9     1    80    11 1.1537e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq3(30,56)
+   10     1    87    12 1.2698e+05  1.3e-01 SB 0.0e+00 1.1e+05 (DemandEq3(30,56)
+   11     1    88    13 1.0211e+06  1.0e+00 SD 0.0e+00 9.0e+05 (DemandEq3(30,56)
+   12     1    89    14 4.6601e+03  1.0e+00 SO 0.0e+00 4.4e+03 (DemandEq3(30,56)
+   13     1    90    15 1.1269e-01  1.0e+00 SO 0.0e+00 1.1e-01 (DemandEq3(30,56)
+   14     1    91    16 1.5146e-07  1.0e+00 SO 0.0e+00 1.2e-07 (DemandEq3(5,156)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  9.6401e+01 eqn: (DemandEq3(5,156))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (DemandEq3(5,156))
+Inf-Norm of Grad Fischer Fcn. .  5.3144e-01 eqn: (PriceEq3(5,156))
+Two-Norm of Grad Fischer Fcn. .  5.4478e-01
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq3(5,156))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 14
+Minor Iterations. . . . 14
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 91
+Gradient Evaluations. . 16
+Basis Time. . . . . . . 0.028535
+Total Time. . . . . . . 0.199333
+Residual. . . . . . . . 1.514551e-07
+Postsolved residual: 1.5146e-07
+
+--- Reading solution for model ModelB
+--- Executing after solve: elapsed 0:00:04.999
+--- Main file.gms(4674) 31 Mb
+--- Generating MCP model ModelB
+--- Main file.gms(4680) 33 Mb
+--- LOOPS* = simmod3_a100
+---   12,257 rows  13,231 columns  36,430 non-zeroes
+---   974 fixed-and-unmatched column(s) will be treated as constant
+---   30,759 nl-code  12,154 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.190E+08, 9.523E+11] - Zero values observed as well
+--- Matrix    [min, max] : [ 8.882E-16, 7.179E+07] - Zero values observed as well
+--- Main file.gms(4680) 31 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:05.072
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12257 row/cols, 32376 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  936 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 8703
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (Q(5,156))
+Maximum of F. . . . . . . . . .  3.3337e+04 eqn: (SupplyEq3(11,299))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (MCeq3(92))
+Maximum Column Norm . . . . . .  4.4580e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,203))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.7157e+05             0.0e+00 (SupplyEq3(13,299))
+    1     8     0  8703 2.6503e+05  2.8e-02    0.0e+00 (SupplyEq3(13,299))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     9     2 2.6503e+05           I 0.0e+00 6.5e+04 (SupplyEq3(13,29)
+    1     1    16     3 5.8105e+05  1.3e-01 SB 0.0e+00 5.0e+05 (DemandEq3(30,56)
+    2     1    23     4 9.1011e+05  1.3e-01 SB 0.0e+00 8.4e+05 (DemandEq3(30,56)
+    3     1    30     5 1.1313e+06  1.3e-01 SB 0.0e+00 1.1e+06 (DemandEq3(30,56)
+    4     1    38     6 1.1180e+06  5.5e-02 SB 0.0e+00 1.0e+06 (DemandEq3(30,56)
+    5     1    46     7 1.1010e+06  5.5e-02 SB 0.0e+00 1.0e+06 (DemandEq3(30,56)
+    6     1    47     8 1.0997e+07  1.0e+00 SD 0.0e+00 1.0e+07 (DemandEq3(30,56)
+    7     1    48     9 1.1538e+06  1.0e+00 SO 0.0e+00 1.1e+06 (DemandEq3(30,56)
+    8     1    49    10 2.1155e+04  1.0e+00 SO 0.0e+00 2.0e+04 (DemandEq3(30,56)
+    9     1    50    11 7.6747e+00  1.0e+00 SO 0.0e+00 7.3e+00 (DemandEq3(30,56)
+   10     1    51    12 1.0148e-06  1.0e+00 SO 0.0e+00 9.7e-07 (DemandEq3(30,56)
+   11     1    52    13 5.1723e-08  1.0e+00 SO 0.0e+00 3.0e-08 (DemandEq3(35,25)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  9.2452e-01 eqn: (DemandEq3(35,125))
+Inf-Norm of Normal Map. . . . .  2.9802e-08 eqn: (DemandEq3(35,254))
+Inf-Norm of Minimum Map . . . .  2.9802e-08 eqn: (DemandEq3(35,254))
+Inf-Norm of Fischer Function. .  2.9802e-08 eqn: (DemandEq3(35,254))
+Inf-Norm of Grad Fischer Fcn. .  5.2341e-02 eqn: (PriceEq3(35,254))
+Two-Norm of Grad Fischer Fcn. .  5.2922e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.0867e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  2.9802e-08 eqn: (DemandEq3(35,254))
+Maximum of Grad F . . . . . . .  4.4580e+06 eqn: (DemandEq3(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 11
+Minor Iterations. . . . 11
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 52
+Gradient Evaluations. . 13
+Basis Time. . . . . . . 0.022942
+Total Time. . . . . . . 0.133616
+Residual. . . . . . . . 5.172289e-08
+Postsolved residual: 5.1723e-08
+
+--- Reading solution for model ModelB
+--- Executing after solve: elapsed 0:00:05.340
+--- Main file.gms(5031) 32 Mb
+--- Generating MCP model ModelC
+--- Main file.gms(5033) 34 Mb
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.708E-14, 1.189E+08] - Zero values observed as well
+--- Main file.gms(5033) 32 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:05.751
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.5959e+05 eqn: (NXeq4(155,459))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq4(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.3497e+06             0.0e+00 (MCeq4(459))
+    1     1     0  9266 8.3855e-08  1.0e+00    0.0e+00 (NXeq4(21,56))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     2     2 8.3855e-08           I 0.0e+00 6.0e-08 (NXeq4(21,56))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  7.2675e-03 eqn: (DemandEq4(30,367))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Grad Fischer Fcn. .  3.2976e-03 eqn: (PriceEq4(30,236))
+Two-Norm of Grad Fischer Fcn. .  3.2981e-03
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 2
+Gradient Evaluations. . 2
+Basis Time. . . . . . . 0.002344
+Total Time. . . . . . . 0.021957
+Residual. . . . . . . . 8.385534e-08
+Postsolved residual: 8.4390e-08
+
+--- Reading solution for model ModelC
+--- Executing after solve: elapsed 0:00:05.904
+--- Main file.gms(5035) 32 Mb
+--- Generating MCP model ModelC
+--- Main file.gms(5041) 35 Mb
+--- LOOPS* = Basemod4
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 4.441E-16, 1.189E+08] - Zero values observed as well
+--- Main file.gms(5041) 33 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:05.941
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq4(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             8.3855e-08             0.0e+00 (NXeq4(21,56))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 8.3855e-08           I 0.0e+00 6.0e-08 (NXeq4(21,56))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  7.2675e-03 eqn: (DemandEq4(30,367))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Grad Fischer Fcn. .  3.2976e-03 eqn: (PriceEq4(30,236))
+Two-Norm of Grad Fischer Fcn. .  3.2981e-03
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016885
+Residual. . . . . . . . 8.385534e-08
+Postsolved residual: 8.3855e-08
+
+--- Reading solution for model ModelC
+--- Executing after solve: elapsed 0:00:06.092
+--- Main file.gms(5035) 34 Mb
+--- Generating MCP model ModelC
+--- Main file.gms(5041) 36 Mb
+--- LOOPS* = simmod4_a005
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 4.441E-16, 1.189E+08] - Zero values observed as well
+--- Main file.gms(5041) 34 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:06.170
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  2.2503e+02 eqn: (SupplyEq4(54,692))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq4(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.8846e+03             0.0e+00 (SupplyEq4(14,547))
+    1     7     0  9266 1.7630e+03  6.9e-02    0.0e+00 (SupplyEq4(14,547))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     8     2 1.7630e+03           I 0.0e+00 3.0e+02 (SupplyEq4(14,54)
+    1     1    13     3 4.6666e+03  3.3e-01 SB 0.0e+00 3.5e+03 (DemandEq4(30,56)
+    2     1    14     4 1.8223e+04  1.0e+00 SD 0.0e+00 1.4e+04 (DemandEq4(30,56)
+    3     1    15     5 9.0731e-01  1.0e+00 SO 0.0e+00 8.1e-01 (DemandEq4(30,56)
+    4     1    16     6 1.2162e-07  1.0e+00 SO 0.0e+00 6.0e-08 (NXeq4(21,56))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  2.7855e+01 eqn: (DemandEq4(34,156))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (NXeq4(21,56))
+Inf-Norm of Grad Fischer Fcn. .  2.6181e-01 eqn: (PriceEq4(34,156))
+Two-Norm of Grad Fischer Fcn. .  2.6535e-01
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (NXeq4(21,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 4
+Minor Iterations. . . . 4
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 16
+Gradient Evaluations. . 6
+Basis Time. . . . . . . 0.011245
+Total Time. . . . . . . 0.064447
+Residual. . . . . . . . 1.216180e-07
+Postsolved residual: 1.2162e-07
+
+--- Reading solution for model ModelC
+--- Executing after solve: elapsed 0:00:06.368
+--- Main file.gms(5035) 35 Mb
+--- Generating MCP model ModelC
+--- Main file.gms(5041) 37 Mb
+--- LOOPS* = simmod4_a050
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 5.551E-17, 1.181E+08] - Zero values observed as well
+--- Main file.gms(5041) 35 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:06.451
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  3.7650e+03 eqn: (SupplyEq4(14,692))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq4(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             3.2045e+04             0.0e+00 (SupplyEq4(61,692))
+    1     8     0  9266 3.1474e+04  2.8e-02    0.0e+00 (SupplyEq4(61,692))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     9     2 3.1474e+04           I 0.0e+00 7.1e+03 (SupplyEq4(61,69)
+    1     1    16     3 1.0869e+05  1.3e-01 SB 0.0e+00 8.6e+04 (DemandEq4(30,56)
+    2     1    24     4 1.1522e+05  5.5e-02 SB 0.0e+00 9.1e+04 (DemandEq4(30,56)
+    3     1    32     5 1.2005e+05  5.5e-02 SB 0.0e+00 9.6e+04 (DemandEq4(30,56)
+    4     1    40     6 1.2341e+05  5.5e-02 SB 0.0e+00 9.9e+04 (DemandEq4(30,56)
+    5     1    48     7 1.2549e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq4(30,56)
+    6     1    56     8 1.2649e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq4(30,56)
+    7     1    64     9 1.2657e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq4(30,56)
+    8     1    72    10 1.2587e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq4(30,56)
+    9     1    80    11 1.2451e+05  5.5e-02 SB 0.0e+00 1.0e+05 (DemandEq4(30,56)
+   10     1    87    12 1.3706e+05  1.3e-01 SB 0.0e+00 1.1e+05 (DemandEq4(30,56)
+   11     1    88    13 1.1084e+06  1.0e+00 SD 0.0e+00 8.9e+05 (DemandEq4(30,56)
+   12     1    89    14 4.7304e+03  1.0e+00 SO 0.0e+00 4.4e+03 (DemandEq4(30,56)
+   13     1    90    15 1.1303e-01  1.0e+00 SO 0.0e+00 1.1e-01 (DemandEq4(30,56)
+   14     1    91    16 9.8376e-08  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq4(30,56)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.8312e+01 eqn: (DemandEq4(30,56))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq4(30,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq4(30,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq4(30,56))
+Inf-Norm of Grad Fischer Fcn. .  4.0961e-02 eqn: (PriceEq4(30,56))
+Two-Norm of Grad Fischer Fcn. .  4.9940e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq4(30,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 14
+Minor Iterations. . . . 14
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 91
+Gradient Evaluations. . 16
+Basis Time. . . . . . . 0.030993
+Total Time. . . . . . . 0.209802
+Residual. . . . . . . . 9.837591e-08
+Postsolved residual: 9.8376e-08
+
+--- Reading solution for model ModelC
+--- Executing after solve: elapsed 0:00:06.794
+--- Main file.gms(5035) 36 Mb
+--- Generating MCP model ModelC
+--- Main file.gms(5041) 38 Mb
+--- LOOPS* = simmod4_a100
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.110E-16, 1.112E+08] - Zero values observed as well
+--- Main file.gms(5041) 36 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:06.877
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9164e+04 eqn: (SupplyEq4(13,692))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq4(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             3.7109e+05             0.0e+00 (SupplyEq4(61,692))
+    1     8     0  9266 3.6150e+05  2.8e-02    0.0e+00 (SupplyEq4(61,692))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     9     2 3.6150e+05           I 0.0e+00 1.1e+05 (SupplyEq4(61,69)
+    1     1    15     3 1.2749e+06  2.1e-01 SB 0.0e+00 1.1e+06 (DemandEq4(30,56)
+    2     1    22     4 1.4890e+06  1.3e-01 SB 0.0e+00 1.3e+06 (DemandEq4(30,56)
+    3     1    23     5 1.5514e+07  1.0e+00 SD 0.0e+00 1.4e+07 (DemandEq4(30,56)
+    4     1    24     6 1.9542e+06  1.0e+00 SD 0.0e+00 1.8e+06 (DemandEq4(30,56)
+    5     1    25     7 5.7478e+04  1.0e+00 SO 0.0e+00 5.4e+04 (DemandEq4(30,56)
+    6     1    26     8 5.6353e+01  1.0e+00 SO 0.0e+00 5.3e+01 (DemandEq4(30,56)
+    7     1    27     9 5.4382e-05  1.0e+00 SO 0.0e+00 5.1e-05 (DemandEq4(30,56)
+    8     1    28    10 8.4224e-08  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq4(30,56)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.8312e+01 eqn: (DemandEq4(30,56))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq4(30,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq4(30,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq4(30,56))
+Inf-Norm of Grad Fischer Fcn. .  4.0961e-02 eqn: (PriceEq4(30,56))
+Two-Norm of Grad Fischer Fcn. .  4.5090e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq4(30,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq4(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 8
+Minor Iterations. . . . 8
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 28
+Gradient Evaluations. . 10
+Basis Time. . . . . . . 0.018856
+Total Time. . . . . . . 0.097371
+Residual. . . . . . . . 8.422425e-08
+Postsolved residual: 8.4224e-08
+
+--- Reading solution for model ModelC
+--- Executing after solve: elapsed 0:00:07.107
+--- Main file.gms(5396) 37 Mb
+--- Generating MCP model ModelD
+--- Main file.gms(5398) 40 Mb
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.708E-14, 1.189E+08] - Zero values observed as well
+--- Main file.gms(5398) 38 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:07.494
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq5(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.2631e-07             0.0e+00 (DemandEq5(34,156))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 2.2631e-07           I 0.0e+00 1.2e-07 (DemandEq5(34,15)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  6.8816e+00 eqn: (DemandEq5(30,27))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (DemandEq5(34,156))
+Inf-Norm of Grad Fischer Fcn. .  9.5687e-01 eqn: (PriceEq5(5,156))
+Two-Norm of Grad Fischer Fcn. .  1.0910e+00
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000003
+Total Time. . . . . . . 0.016724
+Residual. . . . . . . . 2.263074e-07
+Postsolved residual: 2.2631e-07
+
+--- Reading solution for model ModelD
+--- Executing after solve: elapsed 0:00:07.643
+--- Main file.gms(5400) 38 Mb
+--- Generating MCP model ModelD
+--- Main file.gms(5406) 41 Mb
+--- LOOPS* = Basemod5
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.708E-14, 1.189E+08] - Zero values observed as well
+--- Main file.gms(5406) 38 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:07.680
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq5(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.2631e-07             0.0e+00 (DemandEq5(34,156))
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     1     1 2.2631e-07           I 0.0e+00 1.2e-07 (DemandEq5(34,15)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  6.8816e+00 eqn: (DemandEq5(30,27))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (DemandEq5(34,156))
+Inf-Norm of Grad Fischer Fcn. .  9.5687e-01 eqn: (PriceEq5(5,156))
+Two-Norm of Grad Fischer Fcn. .  1.0910e+00
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq5(5,156))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 0
+Minor Iterations. . . . 0
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 0
+Gradient Steps. . . . . 0
+Function Evaluations. . 1
+Gradient Evaluations. . 1
+Basis Time. . . . . . . 0.000004
+Total Time. . . . . . . 0.017290
+Residual. . . . . . . . 2.263074e-07
+Postsolved residual: 2.2631e-07
+
+--- Reading solution for model ModelD
+--- Executing after solve: elapsed 0:00:07.834
+--- Main file.gms(5400) 40 Mb
+--- Generating MCP model ModelD
+--- Main file.gms(5406) 42 Mb
+--- LOOPS* = simmod5_a005
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.708E-14, 1.189E+08] - Zero values observed as well
+--- Main file.gms(5406) 40 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:07.921
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  2.7297e+02 eqn: (SupplyEq5(14,702))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq5(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.4015e+03             0.0e+00 (SupplyEq5(11,702))
+    1     7     0  9266 2.3583e+03  6.9e-02    0.0e+00 (DemandEq5(35,254))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     8     2 2.3583e+03           I 0.0e+00 7.4e+02 (DemandEq5(35,25)
+    1     1    14     3 7.0185e+03  2.1e-01 SB 0.0e+00 6.5e+03 (DemandEq5(35,25)
+    2     1    15     4 8.6704e+04  1.0e+00 SD 0.0e+00 8.3e+04 (DemandEq5(35,25)
+    3     1    16     5 5.0480e+00  1.0e+00 SO 0.0e+00 4.8e+00 (DemandEq5(35,25)
+    4     1    17     6 1.5420e-07  1.0e+00 SO 0.0e+00 1.2e-07 (DemandEq5(34,15)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  5.5710e+01 eqn: (DemandEq5(34,156))
+Inf-Norm of Normal Map. . . . .  1.1921e-07 eqn: (DemandEq5(34,156))
+Inf-Norm of Minimum Map . . . .  1.1921e-07 eqn: (DemandEq5(34,156))
+Inf-Norm of Fischer Function. .  1.1921e-07 eqn: (DemandEq5(34,156))
+Inf-Norm of Grad Fischer Fcn. .  5.2363e-01 eqn: (PriceEq5(34,156))
+Two-Norm of Grad Fischer Fcn. .  5.3801e-01
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  1.1921e-07 eqn: (DemandEq5(34,156))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 4
+Minor Iterations. . . . 4
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 17
+Gradient Evaluations. . 6
+Basis Time. . . . . . . 0.010269
+Total Time. . . . . . . 0.062553
+Residual. . . . . . . . 1.542036e-07
+Postsolved residual: 1.5420e-07
+
+--- Reading solution for model ModelD
+--- Executing after solve: elapsed 0:00:08.121
+--- Main file.gms(5400) 41 Mb
+--- Generating MCP model ModelD
+--- Main file.gms(5406) 43 Mb
+--- LOOPS* = simmod5_a050
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.110E-16, 1.183E+08] - Zero values observed as well
+--- Main file.gms(5406) 41 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:08.220
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  4.7658e+03 eqn: (SupplyEq5(14,702))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq5(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             4.3060e+04             0.0e+00 (SupplyEq5(11,702))
+    1     9     0  9266 4.2629e+04  1.2e-02    0.0e+00 (SupplyEq5(11,702))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    10     2 4.2629e+04           I 0.0e+00 9.4e+03 (SupplyEq5(11,70)
+    1     1    18     3 7.4263e+04  5.5e-02 SB 0.0e+00 6.0e+04 (DemandEq5(35,25)
+    2     1    26     4 1.1850e+05  5.5e-02 SB 0.0e+00 1.1e+05 (DemandEq5(35,25)
+    3     1    34     5 1.5751e+05  5.5e-02 SB 0.0e+00 1.5e+05 (DemandEq5(35,25)
+    4     1    42     6 1.9001e+05  5.5e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+    5     1    52     7 1.8929e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+    6     1    62     8 1.8857e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+    7     1    71     9 1.9028e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+    8     1    81    10 1.8948e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+    9     1    91    11 1.8867e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   10     1   100    12 1.8989e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   11     1   110    13 1.8902e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   12     1   119    14 1.8988e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   13     1   129    15 1.8895e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   14     1   138    16 1.8948e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   15     1   148    17 1.8850e+05  9.2e-03 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   16     1   157    18 1.8874e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   17     1   166    19 1.8876e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   18     1   175    20 1.8859e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   19     1   184    21 1.8823e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   20     1   193    22 1.8770e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   21     1   202    23 1.8701e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   22     1   211    24 1.8617e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   23     1   220    25 1.8519e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   24     1   229    26 1.8409e+05  2.3e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   25     1   238    27 1.8287e+05  2.3e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   26     1   247    28 1.8154e+05  2.3e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   27     1   255    29 1.8738e+05  5.5e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   28     1   264    30 1.8553e+05  2.3e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   29     1   273    31 1.8361e+05  2.3e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   30     1   282    32 1.8163e+05  2.3e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   31     1   290    33 1.8386e+05  5.5e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   32     1   298    34 1.8463e+05  5.5e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   33     1   306    35 1.8416e+05  5.5e-02 SB 0.0e+00 1.8e+05 (DemandEq5(35,25)
+   34     1   314    36 1.8265e+05  5.5e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   35     1   322    37 1.8028e+05  5.5e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   36     1   330    38 1.7720e+05  5.5e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   37     1   338    39 1.7353e+05  5.5e-02 SB 0.0e+00 1.7e+05 (DemandEq5(35,25)
+   38     1   339    40 1.6815e+06  1.0e+00 SD 0.0e+00 1.6e+06 (DemandEq5(35,25)
+   39     1   340    41 2.4138e+03  1.0e+00 SO 0.0e+00 2.3e+03 (DemandEq5(35,25)
+   40     1   341    42 5.4150e-03  1.0e+00 SO 0.0e+00 4.6e-03 (DemandEq5(35,25)
+   41     1   342    43 1.1226e-07  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq5(30,27)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.8312e+01 eqn: (DemandEq5(30,56))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq5(30,27))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq5(30,27))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq5(30,27))
+Inf-Norm of Grad Fischer Fcn. .  4.0961e-02 eqn: (PriceEq5(30,56))
+Two-Norm of Grad Fischer Fcn. .  5.2271e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq5(30,27))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 41
+Minor Iterations. . . . 41
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 342
+Gradient Evaluations. . 43
+Basis Time. . . . . . . 0.085235
+Total Time. . . . . . . 0.676888
+Residual. . . . . . . . 1.122596e-07
+Postsolved residual: 1.1226e-07
+
+--- Reading solution for model ModelD
+--- Executing after solve: elapsed 0:00:09.031
+--- Main file.gms(5400) 42 Mb
+--- Generating MCP model ModelD
+--- Main file.gms(5406) 44 Mb
+--- LOOPS* = simmod5_a100
+---   12,242 rows  13,231 columns  36,978 non-zeroes
+---   989 fixed-and-unmatched column(s) will be treated as constant
+---   32,782 nl-code  12,732 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [        NA,        NA] - Zero values observed as well
+--- Bound     [min, max] : [ 1.905E+08, 1.355E+12] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.110E-16, 1.131E+08] - Zero values observed as well
+--- Main file.gms(5406) 42 Mb
+--- Executing PATH (Solvelink=2): elapsed 0:00:09.114
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+12242 row/cols, 32605 non-zeros, 0.02% dense.
+
+Path 5.0.07 (Tue Apr  2 07:35:37 2024)
+Written by Todd Munson, Steven Dirkse, Youngdae Kim, and Michael Ferris
+
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  358 IFx:    0
+MCPC: Zer:    0 One: 2618 Two:    0 Thr:    0
+Preprocessed size   : 9266
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  7.3183e+05 eqn: (SupplyEq5(11,702))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (SupplyEq5(5,156))
+Maximum Column Norm . . . . . .  8.0268e+06 var: (P(5,156))
+Minimum Column Norm . . . . . .  1.0000e+00 var: (P(5,263))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             4.3219e+06             0.0e+00 (SupplyEq5(11,702))
+    1     6     0  9266 4.1471e+06  1.7e-01    0.0e+00 (DemandEq5(35,254))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     7     2 4.1471e+06           I 0.0e+00 2.0e+06 (DemandEq5(35,25)
+    1     1    11     3 1.3537e+07  5.1e-01 SB 0.0e+00 1.3e+07 (DemandEq5(35,25)
+    2     1    12     4 1.4342e+07  1.0e+00 SO 0.0e+00 1.3e+07 (DemandEq5(35,25)
+    3     1    13     5 9.8969e+05  1.0e+00 SO 0.0e+00 5.7e+05 (DemandEq5(30,56)
+    4     1    14     6 7.6943e+04  1.0e+00 SO 0.0e+00 4.8e+04 (DemandEq5(30,51)
+    5     1    15     7 1.1996e+03  1.0e+00 SO 0.0e+00 8.7e+02 (DemandEq5(30,51)
+    6     1    16     8 4.9081e-01  1.0e+00 SO 0.0e+00 3.2e-01 (DemandEq5(30,51)
+    7     1    17     9 3.1221e-06  1.0e+00 SO 0.0e+00 2.7e-06 (DemandEq5(34,70)
+    8     1    18    10 1.3099e-07  1.0e+00 SO 0.0e+00 6.0e-08 (DemandEq5(21,56)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  1.8312e+01 eqn: (DemandEq5(30,56))
+Inf-Norm of Normal Map. . . . .  5.9605e-08 eqn: (DemandEq5(21,56))
+Inf-Norm of Minimum Map . . . .  5.9605e-08 eqn: (DemandEq5(21,56))
+Inf-Norm of Fischer Function. .  5.9605e-08 eqn: (DemandEq5(21,56))
+Inf-Norm of Grad Fischer Fcn. .  4.3005e-02 eqn: (PriceEq5(21,56))
+Two-Norm of Grad Fischer Fcn. .  6.7651e-02
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  8.5399e+08 var: (X(5,156))
+Maximum of F. . . . . . . . . .  5.9605e-08 eqn: (DemandEq5(21,56))
+Maximum of Grad F . . . . . . .  8.0268e+06 eqn: (DemandEq5(5,156))
+                                            var: (P(5,156))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 8
+Minor Iterations. . . . 8
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 1
+Gradient Steps. . . . . 0
+Function Evaluations. . 18
+Gradient Evaluations. . 10
+Basis Time. . . . . . . 0.019091
+Total Time. . . . . . . 0.084781
+Residual. . . . . . . . 1.309948e-07
+Postsolved residual: 1.3099e-07
+
+--- Reading solution for model ModelD
+--- Executing after solve: elapsed 0:00:09.335
+--- Main file.gms(5859) 43 Mb
+--- GDX File (execute_unload) /Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/FinalOutputs.gdx
+--- GDX File /Users/ArndtF/Documents/GitHub/PollinationCropMarketModel/Main file.gdx
+*** Status: Normal completion
+--- Job Main file.gms Stop 02/13/25 12:57:04 elapsed 0:00:09.452
