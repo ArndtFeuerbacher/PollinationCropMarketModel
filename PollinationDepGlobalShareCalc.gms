@@ -75,6 +75,7 @@ totalvalueatrisk(authors,year) = SUM(k, valueatrisk_depMean0X(k,authors,year));
 
 prodvalue_shr_baseX(k,year)$kX(k) = SUM(i, Q0X(i,k,year) * PW0X(k,year)) / SUM((i,kp)$kX(kp),Q0X(i,kp,year) * PW0X(kp,year));
 
+globalprodvalue0X(year)  = SUM((i,kp)$kX(kp),Q0X(i,kp,year) * PW0X(kp,year));
 avg_depratio_prod(authors,year) = SUM(k, prodvalue_shr_baseX(k, year) * depratios(k,authors,"mean") );
 
 ** in trade

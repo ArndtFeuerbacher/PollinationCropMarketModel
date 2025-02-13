@@ -1,4 +1,4 @@
-** Model Code underlyign the results of Feuerbacher (2025) - Pollinator Declines, International Trade and Global Food Security: Reassessing the Global Economic and Nutritional Impacts
+*** Model Code underlying the results of Feuerbacher (2025) - Pollinator Declines, International Trade and Global Food Security: Reassessing the Global Economic and Nutritional Impacts
 ** Version: February, 2025 - Mansuscript accepted with minor revisions by Ecological Economics
 
 
